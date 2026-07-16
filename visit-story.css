@@ -1,0 +1,27 @@
+.visit { align-items: center; padding-block: 88px; }
+.visit-content { width: min(100%, 440px); padding-top: 0; text-align: left; transform: translateY(-58px); }
+.visit-content .eyebrow { margin-bottom: 8px; }
+.visit-content address { margin: 18px 0 9px; }
+.visit-side { order: 2; display: block; width: min(42vw, 500px); padding-top: 0; transform: translateY(42px); }
+.visit-side .visit-map { width: 100%; min-height: 250px; margin: 0; }
+.visit-side .visit-map iframe { height: 250px; filter: saturate(1.08) contrast(1.03); }
+.visit-story { margin-top: 28px; padding-top: 0; border-top: 0; }
+.visit-story h3 { margin: 0 0 12px; font: 500 30px "Playfair Display", serif; letter-spacing: -.045em; }
+.visit-story p { margin: 0; color: #5f5e58; font-size: 15px; line-height: 1.65; }
+.visit-story p + p { margin-top: 10px; }
+.visit-side .visit-form { width: min(100%, 430px); max-width: 430px; margin: 24px auto 0; }
+.visit-side .form-row { grid-template-columns: 1fr; gap: 0; }
+.visit-side .visit-form h3 { font-size: 26px; }
+.visit-side .visit-form > p:not(.form-message) { font-size: 13px; }
+.visit-side .visit-form label { font-size: 9px; }
+.visit-side .visit-form input { padding: 9px 0; font-size: 14px; }
+.visit-side .visit-form button { margin-top: 18px; padding: 12px 16px; font-size: 10px; }
+
+@media (max-width: 760px) {
+  .visit { padding-block: 58px; }
+  .visit-content, .visit-side { width: 100%; }
+  .visit-content { padding-top: 0; text-align: center; transform: none; }
+  .visit-story { text-align: left; }
+  .visit-side { display: block; padding-top: 0; transform: none; }
+  .visit-side .visit-map iframe { height: 230px; }
+}

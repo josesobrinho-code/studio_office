@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Studio e Office — móveis para escritório e planejados em Anápolis-GO." />
+    <title>Studio e Office | Móveis que transformam espaços</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="landing-logo.css" />
+    <link rel="stylesheet" href="hero-new.css" />
+    <link rel="stylesheet" href="visit-story.css" />
+    <link rel="stylesheet" href="palette.css" />
+    <link rel="stylesheet" href="planned-image.css" />
+    <link rel="stylesheet" href="solutions-choice.css" />
+    <link rel="stylesheet" href="site-header.css" />
+    <link rel="stylesheet" href="site-polish.css" />
+    <link rel="stylesheet" href="solutions-motion.css" />
+  </head>
+  <body>
+    <main id="inicio">
+      <header class="site-header">
+        <a class="site-header-logo" href="#inicio" aria-label="Studio e Office - início"><img src="assets/studio-office-logo.webp" alt="Studio e Office" /></a>
+        <nav aria-label="Navegação principal">
+          <a href="#inicio">Início</a>
+          <a href="#solucoes">Soluções</a>
+          <a href="#visita">Visita</a>
+        </nav>
+        <a class="site-header-contact" href="#visita">Fale conosco <span aria-hidden="true">↗</span></a>
+      </header>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">30 anos no mercado</p>
+          <h1 id="hero-title">Há 30 anos criando<br />ambientes corporativos<br />com excelência e inovação.</h1>
+          <a class="hero-contact" href="#visita">Fale conosco <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="hero-partners" aria-label="Marcas parceiras">
+          <span>Cavaletti</span>
+          <i aria-hidden="true"></i>
+          <span>Fortline</span>
+        </div>
+        <svg class="hero-wave" viewBox="0 0 1440 260" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 168C192 118 407 75 620 105c180 25 232 101 356 73 139-31 208-151 374-139 38 3 68 10 90 20v201H0Z" />
+        </svg>
+      </section>
+
+      <section class="solutions" id="solucoes" aria-labelledby="solucoes-titulo">
+        <span class="solutions-orb" aria-hidden="true"></span>
+        <div class="solutions-heading">
+          <div>
+            <p class="eyebrow">Escolha sua experiência</p>
+            <h2 id="solucoes-titulo">O que você<br /><em>procura hoje?</em></h2>
+          </div>
+        </div>
+        <div class="solution-grid">
+          <a class="solution-card office" href="moveis-escritorio/">
+            <span class="card-number">01</span>
+            <span class="choice-kind">Corporativo</span>
+            <div><p>Móveis para</p><h3>Escritório</h3><span class="card-link">Conhecer soluções <b>↗</b></span></div>
+          </a>
+          <a class="solution-card planned" href="moveis-planejados/">
+            <span class="card-number">02</span>
+            <span class="choice-kind">Planejados</span>
+            <div><p>Móveis</p><h3>Planejados</h3><span class="card-link">Conhecer soluções <b>↗</b></span></div>
+          </a>
+        </div>
+      </section>
+
+      <section class="visit" id="visita" aria-labelledby="visit-title">
+        <div class="visit-content">
+          <p class="eyebrow">Venha nos fazer uma visita</p>
+          <h2 id="visit-title">Conheça a Studio<br /><em>de perto.</em></h2>
+          <div class="visit-story">
+            <h3>Nossa história</h3>
+            <p>Há 30 anos, a Studio e Office transforma ambientes corporativos com soluções que unem funcionalidade, conforto e design.</p>
+            <p>Uma trajetória construída com escuta, cuidado e escolhas que fazem sentido para cada rotina.</p>
+          </div>
+        </div>
+        <div class="visit-side">
+          <div class="visit-map">
+            <iframe title="Mapa da Studio e Office" src="https://www.google.com/maps?q=Genesis%20Office%2C%20Av.%20Juscelino%20Kubitscheck%2C%20500%2C%20An%C3%A1polis%20GO&output=embed" loading="lazy"></iframe>
+          </div>
+          <form class="visit-form" id="visit-form">
+            <h3>Agende sua visita</h3>
+            <p>Deixe seus dados e entraremos em contato para combinar o melhor horário.</p>
+            <div class="form-row">
+              <label>Nome<input name="nome" type="text" required placeholder="Como podemos te chamar?" /></label>
+              <label>WhatsApp<input name="whatsapp" type="tel" required placeholder="(62) 00000-0000" /></label>
+            </div>
+            <label>E-mail<input name="email" type="email" required placeholder="seuemail@exemplo.com" /></label>
+            <button type="submit">Solicitar agendamento <span aria-hidden="true">↗</span></button>
+            <p class="form-message" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+
+    </main>
+    <script>
+      document.querySelector('#visit-form').addEventListener('submit', function (event) {
+        event.preventDefault();
+        this.querySelector('.form-message').textContent = 'Recebemos seu pedido. Em breve entraremos em contato para confirmar a visita.';
+        this.reset();
+      });
+    </script>
+  </body>
+</html>

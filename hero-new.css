@@ -1,0 +1,61 @@
+.hero {
+  display: flex;
+  min-height: min(780px, 100vh);
+  align-items: flex-end;
+  padding: clamp(125px, 14vw, 170px) clamp(24px, 12vw, 240px) clamp(110px, 13vw, 160px);
+  background-image: linear-gradient(90deg, rgba(8, 11, 10, .77) 0%, rgba(8, 11, 10, .5) 43%, rgba(8, 11, 10, .18) 100%), url('assets/hero-sicredi-final.png');
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+}
+
+.hero::before {
+  position: absolute;
+  z-index: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 42%;
+  content: '';
+  background: linear-gradient(0deg, rgba(4, 7, 6, .47), transparent);
+}
+
+.hero::after {
+  position: absolute;
+  z-index: 1;
+  right: -8%;
+  bottom: -112px;
+  left: -8%;
+  height: 170px;
+  content: '';
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  background: var(--paper);
+}
+
+.hero-logo {
+  top: 28px;
+  left: clamp(24px, 8vw, 132px);
+  width: 165px;
+  transform: none;
+  filter: none;
+  mix-blend-mode: normal;
+}
+
+.hero-copy { max-width: 790px; transform: translateY(-42px); }
+.hero .eyebrow { position: relative; z-index: 2; margin-bottom: 20px; color: #e4c28e; }
+.hero h1 { position: relative; z-index: 2; max-width: 810px; font: 600 clamp(2.65rem, 4.25vw, 4.75rem)/1.12 "DM Sans", sans-serif; letter-spacing: -.055em; }
+.hero-contact { position: relative; z-index: 2; display: inline-flex; gap: 38px; align-items: center; margin-top: 34px; padding: 17px 25px; border: 1px solid rgba(255,255,255,.55); border-radius: 999px; background: rgba(15, 15, 13, .52); color: #fff; backdrop-filter: blur(9px); font-size: .79rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; transform: translateY(-28px); transition: background .2s ease, transform .2s ease; }
+.hero-contact:hover { transform: translateY(-30px); background: rgba(255,255,255,.16); }
+.hero-contact span { font-size: 1.05rem; }
+.hero-partners { position: absolute; z-index: 2; bottom: clamp(135px, 12vw, 168px); left: max(24px, 12vw); display: flex; gap: 25px; align-items: center; color: rgba(255,255,255,.9); font: 600 clamp(1.25rem, 2vw, 2rem)/1 "Playfair Display", serif; letter-spacing: -.04em; }
+.hero-partners i { display: block; width: 1px; height: 27px; background: rgba(255,255,255,.64); }
+
+@media (max-width: 760px) {
+  .hero { min-height: 680px; padding: 155px 24px 120px; background-position: 57% center; }
+  .hero-logo { top: 19px; left: 24px; width: 135px; }
+  .hero h1 { font-size: clamp(2.45rem, 11vw, 3.65rem); }
+  .hero-contact { margin-top: 26px; padding: 14px 19px; }
+  .hero-copy { transform: translateY(-22px); }
+  .hero-partners { bottom: 118px; left: 24px; gap: 16px; font-size: 1.25rem; }
+  .hero::after { bottom: -116px; height: 145px; }
+}

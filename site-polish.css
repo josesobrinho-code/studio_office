@@ -1,0 +1,43 @@
+html { background: var(--paper); }
+body { overflow-x: hidden; }
+::selection { background: #c7a779; color: #1b1c1a; }
+
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 2px solid #c7a779;
+  outline-offset: 4px;
+}
+
+.hero { isolation: isolate; }
+.hero h1 { text-shadow: 0 3px 22px rgba(0,0,0,.24); }
+.hero-contact { box-shadow: 0 10px 28px rgba(0,0,0,.18); }
+.hero-partners span { text-shadow: 0 2px 12px rgba(0,0,0,.3); }
+
+.site-header nav a { position: relative; }
+.site-header nav a::after { position: absolute; right: 0; bottom: -8px; left: 0; height: 1px; content: ''; background: #e2c28d; transform: scaleX(0); transform-origin: left; transition: transform .22s ease; }
+.site-header nav a:hover::after { transform: scaleX(1); }
+
+.solutions { position: relative; }
+.solutions::before { position: absolute; top: 0; right: 10vw; left: 10vw; height: 1px; content: ''; background: linear-gradient(90deg, transparent, rgba(27,28,26,.18), transparent); }
+.solutions-heading { align-items: center; }
+.solution-card { border: 1px solid rgba(255,255,255,.25); box-shadow: 0 20px 45px rgba(36,31,23,.12); }
+.solution-card::before { filter: saturate(.88) contrast(1.02); }
+.solution-card:hover { box-shadow: 0 28px 56px rgba(36,31,23,.18); }
+.solution-card > div { position: relative; z-index: 2; }
+.solution-card h3 { text-shadow: 0 2px 15px rgba(0,0,0,.2); }
+.card-link { transition: color .2s ease, border-color .2s ease; }
+.solution-card:hover .card-link { color: #f2d5a4; border-color: #f2d5a4; }
+
+.visit { position: relative; border-top: 1px solid rgba(27,28,26,.08); }
+.visit-content h2 { color: #20211f; }
+.visit-story { border-top-color: rgba(27,28,26,.2); }
+.visit-side .visit-map { box-shadow: 0 15px 34px rgba(44,37,27,.12); }
+.visit-side .visit-form { padding: 0; border: 0; background: transparent; box-shadow: none; }
+.visit-form h3 { color: #20211f; }
+.visit-form input { transition: border-color .2s ease, color .2s ease; }
+.visit-form button { display: inline-flex; align-items: center; justify-content: space-between; gap: 20px; transition: transform .2s ease, background .2s ease; }
+.visit-form button:hover { background: #a7865f; transform: translateY(-2px); }
+
+@media (max-width: 760px) {
+  .solutions-heading { align-items: flex-start; }
+  .visit-side .visit-form { padding: 0; }
+}

@@ -1,0 +1,25 @@
+.quote {
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  gap: clamp(46px, 9vw, 150px);
+  padding: clamp(76px, 10vw, 140px) clamp(24px, 10vw, 163px);
+  background: #1a1b19;
+  color: #f7f5f0;
+}
+
+.quote .eyebrow { color: #c9ad88; }
+.quote h2 { margin: 0; font: 500 clamp(43px, 5vw, 68px)/.98 "Playfair Display", serif; letter-spacing: -.055em; }
+.quote h2 em { color: #d0b28c; }
+.quote-heading > p:last-child { max-width: 395px; margin: 26px 0 0; color: #c6c4bd; font-size: 14px; line-height: 1.75; }
+.quote-form { padding: 30px 32px 28px; border: 1px solid rgba(255,255,255,.2); }
+.quote-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.quote-form label { display: block; margin-top: 20px; color: #c9ad88; font-size: 9px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+.quote-form-row label { margin-top: 0; }
+.quote-form input, .quote-form textarea { width: 100%; display: block; padding: 11px 0; border: solid rgba(255,255,255,.32); border-width: 0 0 1px; border-radius: 0; outline: none; background: transparent; color: #f7f5f0; font: 14px "DM Sans", Arial, sans-serif; resize: vertical; }
+.quote-form input:focus, .quote-form textarea:focus { border-color: #d0b28c; }
+.quote-form input::placeholder, .quote-form textarea::placeholder { color: #94938d; }
+.quote-form textarea { min-height: 94px; line-height: 1.55; }
+.quote-form button { margin-top: 25px; padding: 14px 18px; border: 1px solid #d0b28c; background: #d0b28c; color: #1a1b19; font: 700 10px "DM Sans", Arial, sans-serif; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; }
+.quote-form button span { margin-left: 28px; font-size: 14px; }
+.quote-message { min-height: 18px; margin: 13px 0 0; color: #d0b28c; font-size: 12px; }
+@media (max-width: 760px) { .quote { grid-template-columns: 1fr; gap: 42px; padding: 74px 24px; }.quote-form { padding: 25px 22px; }.quote-form-row { grid-template-columns: 1fr; gap: 20px; }.quote-form-row label { margin-top: 0; } }

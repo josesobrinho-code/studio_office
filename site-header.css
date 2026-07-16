@@ -1,0 +1,16 @@
+.site-header { position: absolute; z-index: 10; top: 0; right: 0; left: 0; display: flex; align-items: center; justify-content: space-between; padding: 20px clamp(24px, 8vw, 132px); border-bottom: 1px solid rgba(255,255,255,.16); background: rgba(18, 20, 18, .76); color: #fff; box-shadow: 0 7px 28px rgba(0,0,0,.16); backdrop-filter: blur(14px); }
+.site-header-logo { display: block; width: 144px; height: 42px; }
+.site-header-logo img { display: block; width: 100%; height: 100%; object-fit: contain; filter: none; }
+.site-header nav { display: flex; gap: clamp(18px, 3vw, 42px); margin-left: 100px; }
+.site-header nav a, .site-header-contact { color: #fff; font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.site-header nav a { opacity: .82; transition: opacity .2s ease; }
+.site-header nav a:hover { opacity: 1; }
+.site-header-contact { display: inline-flex; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.65); }
+.site-header-contact span { font-size: 1rem; }
+
+@media (max-width: 760px) {
+  .site-header { padding: 15px 24px; }
+  .site-header-logo { width: 126px; }
+  .site-header nav { display: none; }
+  .site-header-contact { font-size: .57rem; }
+}

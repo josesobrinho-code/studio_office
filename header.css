@@ -1,0 +1,22 @@
+.back {
+  display: flex;
+  align-items: center;
+  width: 138px;
+  height: 42px;
+}
+
+.back::before {
+  content: "←";
+  margin-right: 10px;
+  color: #171816;
+  font: 400 16px Arial, sans-serif;
+}
+
+.back img {
+  display: block;
+  width: 116px;
+  height: 42px;
+  object-fit: contain;
+  filter: invert(1);
+  mix-blend-mode: multiply;
+}

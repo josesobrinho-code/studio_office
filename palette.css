@@ -1,0 +1,40 @@
+:root {
+  --ink: #1b1c1a;
+  --paper: #f1eee7;
+  --sand: #c7a779;
+  --muted: #65655f;
+  --line: rgba(27, 28, 26, .16);
+}
+
+body { background: var(--paper); }
+
+.hero {
+  background-image: linear-gradient(90deg, rgba(15, 17, 15, .8) 0%, rgba(20, 20, 18, .52) 44%, rgba(35, 29, 21, .16) 100%), url('assets/hero-sicredi-final.png');
+}
+
+.hero::after {
+  display: none;
+}
+
+.hero-wave {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 232px;
+  pointer-events: none;
+}
+
+.hero-wave path { fill: #ece7dc; }
+.hero .eyebrow, .hero-partners { color: #e2c28d; }
+
+.solutions { background: #1b1c1a; color: #f4f1eb; }
+.solutions .eyebrow { color: #d5b481; }
+.solutions h2 em { color: #d5b481; }
+.solutions .brand-logo { opacity: .94; }
+
+.visit { background: #e4ded3; }
+.visit-story p, .visit address, .visit-form > p:not(.form-message) { color: #5e5d57; }
+.visit-story h3 { color: #252622; }

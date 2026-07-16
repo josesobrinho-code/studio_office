@@ -1,0 +1,8 @@
+body.catalog-page { background: #171816; }
+.catalog-page .back { position: absolute; top: 28px; left: clamp(24px, 8vw, 132px); }
+.catalog-page .back::before { color: #f8f6f1; }
+.catalog-page .back img { filter: none; mix-blend-mode: normal; }
+.catalog-page .chair-catalog { min-height: 100vh; padding: 110px max(7vw, 32px) 96px; }
+.catalog-page .catalog-heading h1 { margin: 8px 0 0; max-width: none; color: #f8f6f1; font: 500 clamp(2.55rem, 5vw, 4.8rem)/.95 "Playfair Display", serif; letter-spacing: -.06em; }
+.catalog-page .catalog-heading h1 em { color: #c9ad88; }
+@media (max-width: 850px) { .catalog-page .chair-catalog { padding: 90px 24px 70px; } }

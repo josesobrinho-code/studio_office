@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <base href="../" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Catálogo Fortline da Studio e Office." />
+    <title>Catálogo Fortline | Studio e Office</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="chairs.css" />
+    <link rel="stylesheet" href="header.css" />
+    <link rel="stylesheet" href="catalog.css" />
+    <link rel="stylesheet" href="catalog-page.css" />
+  </head>
+  <body class="catalog-page">
+    <main>
+      <a class="back" href="moveis-escritorio/" aria-label="Voltar para a página de cadeiras"><img src="assets/studio-office-logo.webp" alt="Studio e Office" /></a>
+      <section class="chair-catalog" aria-labelledby="fortline-catalog-title">
+        <div class="catalog-heading">
+          <div>
+            <p class="eyebrow">Catálogo Fortline</p>
+            <h1 id="fortline-catalog-title">Soluções para cada <em>espaço.</em></h1>
+          </div>
+          <p>Explore os produtos Fortline disponíveis para criar ambientes corporativos funcionais, versáteis e acolhedores.</p>
+        </div>
+        <label class="catalog-search" for="fortline-search-input">
+          <span>Buscar no catálogo</span>
+          <input id="fortline-search-input" type="search" placeholder="Ex.: Orbit, Nova Smart ou Chatterbox" autocomplete="off" />
+        </label>
+        <p class="catalog-result-count" id="fortline-result-count" aria-live="polite"></p>
+        <div class="catalog-product-grid fortline-product-grid" id="fortline-products"></div>
+      </section>
+    </main>
+    <dialog class="catalog-preview" id="catalog-preview" aria-labelledby="catalog-preview-title">
+      <button class="catalog-preview-close" type="button" aria-label="Fechar visual">×</button>
+      <img id="catalog-preview-image" src="" alt="" />
+      <p id="catalog-preview-title"></p>
+    </dialog>
+    <script src="catalog-fortline-data.js"></script>
+    <script src="catalog-fortline.js"></script>
+  </body>
+</html>

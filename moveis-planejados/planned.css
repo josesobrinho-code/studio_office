@@ -1,0 +1,28 @@
+:root { --ink: #1b1c1a; --paper: #ece7dc; --gold: #b18b5e; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: "DM Sans", sans-serif; }
+.planned-header { position: absolute; z-index: 2; top: 0; right: 0; left: 0; display: flex; align-items: center; justify-content: space-between; padding: 23px clamp(24px, 8vw, 132px); border-bottom: 1px solid rgba(255,255,255,.2); background: linear-gradient(180deg, rgba(8,8,7,.52), transparent); }
+.planned-header img { display: block; width: 136px; filter: brightness(0) invert(1); }
+.planned-header nav { display: flex; gap: 28px; }
+.planned-header a { color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-decoration: none; text-transform: uppercase; }
+.planned-hero { position: relative; display: flex; align-items: end; min-height: min(740px, 92vh); padding: 135px clamp(24px, 10vw, 160px) 118px; overflow: hidden; background: linear-gradient(90deg, rgba(9,10,9,.72), rgba(9,10,9,.09)), url("../assets/moveis-planejados-final.jpg") center/cover; color: #fff; }
+.planned-hero::after { position: absolute; right: -10%; bottom: -80px; left: -10%; height: 150px; content: ""; border-radius: 50% 50% 0 0 / 100% 100% 0 0; background: var(--paper); }
+.planned-copy { position: relative; z-index: 1; max-width: 780px; }
+.planned-copy p, .eyebrow { margin: 0 0 17px; color: #dfbd8b; font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+h1, h2 { margin: 0; font-family: "Playfair Display", serif; font-weight: 500; letter-spacing: -.055em; }
+h1 { font-size: clamp(3.25rem, 6.2vw, 6.2rem); line-height: .95; }
+em { color: #d6ad79; }
+.planned-copy span { display: block; margin-top: 28px; font-size: 14px; letter-spacing: .16em; text-transform: uppercase; }
+.planned-intro, .planned-quote { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 10vw, 180px); padding: clamp(80px, 11vw, 150px) clamp(24px, 10vw, 160px); }
+.planned-intro h2, .planned-quote h2 { font-size: clamp(3rem, 5vw, 5.25rem); line-height: .95; }
+.planned-text { max-width: 430px; padding-top: 18px; color: #605f59; font-size: 17px; line-height: 1.72; }
+.planned-text p { margin: 0; }.planned-text p + p { margin-top: 17px; }
+.planned-quote { background: var(--ink); color: #f7f4ed; }
+.planned-quote .eyebrow { color: #d6ad79; }
+.planned-quote form { width: min(100%, 440px); }
+label { display: block; margin-top: 15px; color: #d5d0c8; font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+input, textarea { width: 100%; margin-top: 7px; padding: 10px 0; border: 0; border-bottom: 1px solid rgba(255,255,255,.38); outline: 0; background: transparent; color: #fff; font: 15px "DM Sans", sans-serif; }
+textarea { min-height: 90px; resize: vertical; } input::placeholder, textarea::placeholder { color: #aaa69e; }
+button { display: inline-flex; justify-content: space-between; gap: 36px; margin-top: 22px; padding: 14px 17px; border: 0; background: #e2c28d; color: #1b1c1a; font: 700 10px "DM Sans", sans-serif; letter-spacing: .09em; text-transform: uppercase; cursor: pointer; }
+.form-message { min-height: 20px; margin: 10px 0 0; color: #e2c28d; font-size: 12px; }
+@media (max-width: 760px) { .planned-header nav { gap: 14px; }.planned-header nav a { font-size: 9px; }.planned-header img { width: 115px; }.planned-hero { min-height: 640px; }.planned-intro, .planned-quote { grid-template-columns: 1fr; gap: 35px; padding-block: 78px; }.planned-text { padding-top: 0; font-size: 15px; } }

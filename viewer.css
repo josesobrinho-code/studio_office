@@ -1,0 +1,27 @@
+.viewer {
+  position: relative;
+  display: grid;
+  place-items: center;
+  background: #fff;
+}
+
+.viewer img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  padding: 18px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.viewer span {
+  position: absolute;
+  right: 16px;
+  bottom: 15px;
+  padding: 8px 10px;
+  background: #f7f5f0;
+  color: #171816;
+  font: 700 9px "DM Sans", Arial, sans-serif;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}

@@ -1,0 +1,16 @@
+.hero-logo {
+  position: absolute;
+  z-index: 3;
+  top: 28px;
+  left: 50%;
+  width: 192px;
+  height: 70px;
+  object-fit: contain;
+  transform: translateX(-50%);
+  filter: invert(1);
+  mix-blend-mode: multiply;
+}
+
+@media (max-width: 760px) {
+  .hero-logo { top: 18px; width: 145px; height: 52px; }
+}
