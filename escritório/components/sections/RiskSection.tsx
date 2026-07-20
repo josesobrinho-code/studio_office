@@ -52,11 +52,18 @@ type GuaranteeItem = GuaranteeContent & {
   icon: ComponentType<LucideProps>;
 };
 
+function createGuaranteeItem(
+  content: GuaranteeContent | null,
+  icon: ComponentType<LucideProps>,
+): GuaranteeItem | null {
+  return content ? { ...content, icon } : null;
+}
+
 const guaranteeCandidates: Array<GuaranteeItem | null> = [
-  GARANTIA_ANOS ? { ...GARANTIA_ANOS, icon: ShieldCheck } : null,
-  INSTALACAO ? { ...INSTALACAO, icon: Wrench } : null,
-  ASSISTENCIA ? { ...ASSISTENCIA, icon: Headphones } : null,
-  TROCA ? { ...TROCA, icon: RefreshCcw } : null,
+  createGuaranteeItem(GARANTIA_ANOS, ShieldCheck),
+  createGuaranteeItem(INSTALACAO, Wrench),
+  createGuaranteeItem(ASSISTENCIA, Headphones),
+  createGuaranteeItem(TROCA, RefreshCcw),
 ];
 
 const guaranteeItems = guaranteeCandidates.filter(
