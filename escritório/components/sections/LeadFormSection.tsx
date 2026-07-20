@@ -1,7 +1,15 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import {
+  Armchair,
+  ArrowRight,
+  CheckCircle2,
+  MessageCircle,
+  Phone,
+  ShieldCheck,
+  User,
+} from "lucide-react";
 import {
   FormEvent,
   useEffect,
@@ -46,9 +54,9 @@ const sectionCopy = {
   whatsappLabel: "WhatsApp",
   whatsappPlaceholder: "(00) 00000-0000",
   quantityLabel: "Quantidade estimada de cadeiras",
-  quantityPlaceholder: "Selecione uma faixa",
   submit: "Falar com um especialista",
   submitting: "Enviando...",
+  submitHint: "Você será direcionado ao WhatsApp para continuar.",
   configurationError:
     "O WhatsApp do vendedor ainda precisa ser configurado para concluir o envio.",
 };
@@ -180,9 +188,12 @@ async function persistirLead(payload: LeadPayload) {
   }
 }
 
-function isQuantity(value: string): value is Quantity {
-  return quantityOptions.some((option) => option === value);
-}
+const fieldEntrance = (shouldReduceMotion: boolean, delay: number) => ({
+  initial: shouldReduceMotion ? false : { opacity: 0, y: 10 },
+  transition: { delay: shouldReduceMotion ? 0 : delay, duration: shouldReduceMotion ? 0 : 0.35, ease: "easeOut" as const },
+  viewport: { once: true, amount: 0.4 },
+  whileInView: { opacity: 1, y: 0 },
+});
 
 export function LeadFormSection() {
   const shouldReduceMotion = Boolean(useReducedMotion());
@@ -194,7 +205,7 @@ export function LeadFormSection() {
   const [submitError, setSubmitError] = useState("");
   const nomeRef = useRef<HTMLInputElement>(null);
   const whatsappRef = useRef<HTMLInputElement>(null);
-  const quantidadeRef = useRef<HTMLSelectElement>(null);
+  const quantidadeRef = useRef<HTMLDivElement>(null);
   const utmsRef = useRef<UtmParams>(emptyUtms);
 
   useEffect(() => {
@@ -267,16 +278,20 @@ export function LeadFormSection() {
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -left-40 -top-40 h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.06),transparent_70%)]"
+        className="pointer-events-none absolute -left-40 -top-40 h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.07),transparent_70%)]"
       />
-      <motion.div
-        className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-start lg:gap-16"
-        initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
-        transition={{ duration: shouldReduceMotion ? 0 : 0.4, ease: "easeOut" }}
-        viewport={{ once: true, amount: 0.2 }}
-        whileInView={{ opacity: 1, y: 0 }}
-      >
-        <div className="lg:sticky lg:top-28">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-56 -right-32 h-[520px] w-[520px] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.05),transparent_70%)]"
+      />
+
+      <div className="relative mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-16">
+        <motion.div
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
+          transition={{ duration: shouldReduceMotion ? 0 : 0.4, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.3 }}
+          whileInView={{ opacity: 1, y: 0 }}
+        >
           <p className="text-sm font-semibold text-white/55">
             {sectionCopy.eyebrow}
           </p>
@@ -290,119 +305,175 @@ export function LeadFormSection() {
             {sectionCopy.subheadline}
           </p>
 
-          <ul className="mt-10 grid gap-3 border-t border-white/15 pt-6 text-sm text-white/60">
-            {trustPoints.map((point) => (
-              <li className="flex items-center gap-3" key={point}>
-                <CheckCircle2 aria-hidden="true" className="h-5 w-5 shrink-0 text-white/80" />
-                <span>{point}</span>
-              </li>
+          <ul className="mt-10 grid gap-4 border-t border-white/12 pt-8">
+            {trustPoints.map((point, index) => (
+              <motion.li
+                className="flex items-center gap-4"
+                key={point}
+                {...fieldEntrance(shouldReduceMotion, 0.1 + index * 0.07)}
+              >
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 text-white">
+                  <CheckCircle2 aria-hidden="true" className="h-4 w-4" strokeWidth={2} />
+                </span>
+                <span className="text-sm text-white/70">{point}</span>
+              </motion.li>
             ))}
           </ul>
-        </div>
+        </motion.div>
 
-        <form
-          className="rounded-lg border border-white/12 bg-white p-5 text-neutral-950 sm:p-8 lg:p-10"
+        <motion.form
+          className="relative overflow-hidden rounded-3xl bg-white p-6 text-neutral-950 shadow-[0_40px_120px_rgba(0,0,0,0.45)] sm:p-9 lg:p-11"
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 20, scale: 0.98 }}
           noValidate
           onSubmit={handleSubmit}
+          transition={{ duration: shouldReduceMotion ? 0 : 0.45, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.2 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
         >
-          <div className="border-b border-neutral-200 pb-7">
-            <h3 className="text-2xl font-semibold tracking-normal">
-              {sectionCopy.formTitle}
-            </h3>
-            <p className="mt-2 text-sm text-neutral-500">
-              {sectionCopy.formDescription}
-            </p>
+          <div className="flex items-start justify-between gap-4 border-b border-neutral-200 pb-6">
+            <div>
+              <h3 className="text-2xl font-semibold tracking-normal">
+                {sectionCopy.formTitle}
+              </h3>
+              <p className="mt-1.5 text-sm text-neutral-500">
+                {sectionCopy.formDescription}
+              </p>
+            </div>
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neutral-100 text-neutral-500">
+              <MessageCircle aria-hidden="true" className="h-5 w-5" strokeWidth={1.8} />
+            </span>
           </div>
 
           <div className="mt-7 grid gap-6">
-            <div>
-              <label className="text-sm font-semibold" htmlFor="lead-nome">
+            <motion.div {...fieldEntrance(shouldReduceMotion, 0.06)}>
+              <label
+                className="flex items-center gap-2 text-sm font-semibold"
+                htmlFor="lead-nome"
+              >
+                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-neutral-950 text-[0.65rem] font-bold text-white">
+                  1
+                </span>
                 {sectionCopy.nameLabel}
               </label>
-              <input
-                aria-describedby={errors.nome ? "lead-nome-error" : undefined}
-                aria-invalid={Boolean(errors.nome)}
-                autoComplete="name"
-                className="mt-2 min-h-12 w-full rounded-md border border-neutral-300 bg-white px-4 text-base outline-none transition placeholder:text-neutral-400 focus:border-neutral-950 focus:ring-2 focus:ring-neutral-950/10"
-                id="lead-nome"
-                name="nome"
-                onChange={(event) => {
-                  setNome(event.target.value);
-                  if (errors.nome) setErrors((current) => ({ ...current, nome: undefined }));
-                }}
-                placeholder={sectionCopy.namePlaceholder}
-                ref={nomeRef}
-                type="text"
-                value={nome}
-              />
+              <div className="relative mt-2">
+                <User
+                  aria-hidden="true"
+                  className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400"
+                />
+                <input
+                  aria-describedby={errors.nome ? "lead-nome-error" : undefined}
+                  aria-invalid={Boolean(errors.nome)}
+                  autoComplete="name"
+                  className="min-h-12 w-full rounded-xl border border-neutral-300 bg-white pl-11 pr-4 text-base outline-none transition placeholder:text-neutral-400 focus:border-neutral-950 focus:ring-2 focus:ring-neutral-950/10"
+                  id="lead-nome"
+                  name="nome"
+                  onChange={(event) => {
+                    setNome(event.target.value);
+                    if (errors.nome) setErrors((current) => ({ ...current, nome: undefined }));
+                  }}
+                  placeholder={sectionCopy.namePlaceholder}
+                  ref={nomeRef}
+                  type="text"
+                  value={nome}
+                />
+              </div>
               {errors.nome ? (
                 <p className="mt-2 text-sm text-red-700" id="lead-nome-error">
                   {errors.nome}
                 </p>
               ) : null}
-            </div>
+            </motion.div>
 
-            <div>
-              <label className="text-sm font-semibold" htmlFor="lead-whatsapp">
+            <motion.div {...fieldEntrance(shouldReduceMotion, 0.12)}>
+              <label
+                className="flex items-center gap-2 text-sm font-semibold"
+                htmlFor="lead-whatsapp"
+              >
+                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-neutral-950 text-[0.65rem] font-bold text-white">
+                  2
+                </span>
                 {sectionCopy.whatsappLabel}
               </label>
-              <input
-                aria-describedby={
-                  errors.whatsapp ? "lead-whatsapp-error" : undefined
-                }
-                aria-invalid={Boolean(errors.whatsapp)}
-                autoComplete="tel"
-                className="mt-2 min-h-12 w-full rounded-md border border-neutral-300 bg-white px-4 text-base outline-none transition placeholder:text-neutral-400 focus:border-neutral-950 focus:ring-2 focus:ring-neutral-950/10"
-                id="lead-whatsapp"
-                inputMode="tel"
-                name="whatsapp"
-                onChange={(event) => {
-                  setWhatsapp(formatWhatsapp(event.target.value));
-                  if (errors.whatsapp) {
-                    setErrors((current) => ({ ...current, whatsapp: undefined }));
+              <div className="relative mt-2">
+                <Phone
+                  aria-hidden="true"
+                  className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400"
+                />
+                <input
+                  aria-describedby={
+                    errors.whatsapp ? "lead-whatsapp-error" : undefined
                   }
-                }}
-                placeholder={sectionCopy.whatsappPlaceholder}
-                ref={whatsappRef}
-                type="tel"
-                value={whatsapp}
-              />
+                  aria-invalid={Boolean(errors.whatsapp)}
+                  autoComplete="tel"
+                  className="min-h-12 w-full rounded-xl border border-neutral-300 bg-white pl-11 pr-4 text-base outline-none transition placeholder:text-neutral-400 focus:border-neutral-950 focus:ring-2 focus:ring-neutral-950/10"
+                  id="lead-whatsapp"
+                  inputMode="tel"
+                  name="whatsapp"
+                  onChange={(event) => {
+                    setWhatsapp(formatWhatsapp(event.target.value));
+                    if (errors.whatsapp) {
+                      setErrors((current) => ({ ...current, whatsapp: undefined }));
+                    }
+                  }}
+                  placeholder={sectionCopy.whatsappPlaceholder}
+                  ref={whatsappRef}
+                  type="tel"
+                  value={whatsapp}
+                />
+              </div>
               {errors.whatsapp ? (
                 <p className="mt-2 text-sm text-red-700" id="lead-whatsapp-error">
                   {errors.whatsapp}
                 </p>
               ) : null}
-            </div>
+            </motion.div>
 
-            <div>
-              <label className="text-sm font-semibold" htmlFor="lead-quantidade">
+            <motion.div {...fieldEntrance(shouldReduceMotion, 0.18)}>
+              <label className="flex items-center gap-2 text-sm font-semibold">
+                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-neutral-950 text-[0.65rem] font-bold text-white">
+                  3
+                </span>
                 {sectionCopy.quantityLabel}
               </label>
-              <select
+              <div
                 aria-describedby={
                   errors.quantidade ? "lead-quantidade-error" : undefined
                 }
-                aria-invalid={Boolean(errors.quantidade)}
-                className="mt-2 min-h-12 w-full rounded-md border border-neutral-300 bg-white px-4 text-base outline-none transition focus:border-neutral-950 focus:ring-2 focus:ring-neutral-950/10"
-                id="lead-quantidade"
-                name="quantidade"
-                onChange={(event) => {
-                  const value = event.target.value;
-                  setQuantidade(isQuantity(value) ? value : "");
-                  if (errors.quantidade) {
-                    setErrors((current) => ({ ...current, quantidade: undefined }));
-                  }
-                }}
+                aria-label={sectionCopy.quantityLabel}
+                className="mt-2.5 flex flex-wrap gap-2 rounded-xl outline-none"
                 ref={quantidadeRef}
-                value={quantidade}
+                role="group"
+                tabIndex={-1}
               >
-                <option value="">{sectionCopy.quantityPlaceholder}</option>
-                {quantityOptions.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </select>
+                {quantityOptions.map((option) => {
+                  const isSelected = quantidade === option;
+
+                  return (
+                    <motion.button
+                      aria-pressed={isSelected}
+                      className={
+                        isSelected
+                          ? "flex items-center gap-1.5 rounded-full bg-neutral-950 px-4 py-2.5 text-sm font-semibold text-white transition"
+                          : "flex items-center gap-1.5 rounded-full border border-neutral-300 bg-white px-4 py-2.5 text-sm font-semibold text-neutral-600 transition hover:border-neutral-950 hover:text-neutral-950"
+                      }
+                      key={option}
+                      onClick={() => {
+                        setQuantidade(option);
+                        if (errors.quantidade) {
+                          setErrors((current) => ({ ...current, quantidade: undefined }));
+                        }
+                      }}
+                      type="button"
+                      whileTap={shouldReduceMotion ? undefined : { scale: 0.95 }}
+                    >
+                      {isSelected ? (
+                        <Armchair aria-hidden="true" className="h-3.5 w-3.5" strokeWidth={2} />
+                      ) : null}
+                      {option}
+                    </motion.button>
+                  );
+                })}
+              </div>
               {errors.quantidade ? (
                 <p
                   className="mt-2 text-sm text-red-700"
@@ -411,34 +482,41 @@ export function LeadFormSection() {
                   {errors.quantidade}
                 </p>
               ) : null}
+            </motion.div>
+          </div>
+
+          <motion.div {...fieldEntrance(shouldReduceMotion, 0.24)}>
+            <button
+              className="group mt-8 inline-flex min-h-14 w-full cursor-pointer items-center justify-center gap-3 rounded-full bg-neutral-950 px-6 py-4 text-base font-semibold text-white transition hover:-translate-y-0.5 hover:bg-neutral-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-950 disabled:cursor-wait disabled:opacity-70"
+              disabled={isSubmitting}
+              type="submit"
+            >
+              <span>{isSubmitting ? sectionCopy.submitting : sectionCopy.submit}</span>
+              <ArrowRight
+                aria-hidden="true"
+                className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1"
+              />
+            </button>
+
+            <p className="mt-3 text-center text-xs text-neutral-400">
+              {sectionCopy.submitHint}
+            </p>
+
+            <p className="mt-4 flex items-start gap-2 text-xs leading-5 text-neutral-500">
+              <ShieldCheck aria-hidden="true" className="mt-0.5 h-3.5 w-3.5 shrink-0" />
+              {TEXTO_LGPD}
+            </p>
+
+            <div aria-live="polite">
+              {submitError ? (
+                <p className="mt-4 text-sm font-medium text-red-700">
+                  {submitError}
+                </p>
+              ) : null}
             </div>
-          </div>
-
-          <button
-            className="group mt-8 inline-flex min-h-14 w-full cursor-pointer items-center justify-center gap-3 rounded-full bg-neutral-950 px-6 py-4 text-base font-semibold text-white transition hover:-translate-y-0.5 hover:bg-neutral-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-950 disabled:cursor-wait disabled:opacity-70"
-            disabled={isSubmitting}
-            type="submit"
-          >
-            <span>{isSubmitting ? sectionCopy.submitting : sectionCopy.submit}</span>
-            <ArrowRight
-              aria-hidden="true"
-              className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1"
-            />
-          </button>
-
-          <p className="mt-4 text-xs leading-5 text-neutral-500">
-            {TEXTO_LGPD}
-          </p>
-
-          <div aria-live="polite">
-            {submitError ? (
-              <p className="mt-4 text-sm font-medium text-red-700">
-                {submitError}
-              </p>
-            ) : null}
-          </div>
-        </form>
-      </motion.div>
+          </motion.div>
+        </motion.form>
+      </div>
     </section>
   );
 }
