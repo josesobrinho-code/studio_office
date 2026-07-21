@@ -4,7 +4,6 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDown, Check, X } from "lucide-react";
 
 const sectionCopy = {
-  eyebrow: "O que você está comprando de verdade",
   titleLineOne: "Você não compra uma cadeira.",
   titleLineTwo: "Compra 8 horas por dia de quem trabalha pra você.",
   support:
@@ -36,15 +35,11 @@ export function ReframeSection() {
           viewport={{ once: true, amount: 0.3 }}
           whileInView={{ opacity: 1, y: 0 }}
         >
-          <p className="text-sm font-semibold text-neutral-500">
-            {sectionCopy.eyebrow}
-          </p>
           <h2
-            className="mt-4 text-3xl font-semibold leading-tight tracking-normal sm:text-4xl md:text-5xl"
+            className="text-3xl font-semibold leading-tight tracking-normal sm:text-4xl md:text-[2.6rem]"
             id="reframe-section-title"
           >
-            <span className="block">{sectionCopy.titleLineOne}</span>
-            <span className="block">{sectionCopy.titleLineTwo}</span>
+            {sectionCopy.titleLineOne} {sectionCopy.titleLineTwo}
           </h2>
           <p className="mt-7 max-w-xl text-lg leading-8 text-neutral-600">
             {sectionCopy.support}
