@@ -18,7 +18,7 @@ const sectionCopy = {
   title: "Você não comprou errado antes. Comprou no lugar errado.",
   recommendedBadge: "A escolha certa",
   closing:
-    "Todas as outras economizam na compra e cobram na troca. A Cavaletti é a única que sai mais barata no uso.",
+    "Todas as outras economizam na compra e cobram na troca. A Cavaletti é a única que sai mais barata no dia a dia.",
   cta: "Quero equipar meu escritório do jeito certo",
 };
 
@@ -29,34 +29,35 @@ type ComparisonRow = {
   limitation: string;
 };
 
-// TODO: confirmar faixa de preço, ausência de norma e ciclo médio de troca.
+// TODO: confirmar faixa de preço, garantia e ciclo médio de troca.
 const ALT_1: ComparisonRow = {
   icon: Store,
-  alternative: "Cadeira de marketplace R$ 300–500",
-  promise: "Preço baixo",
-  limitation: "Sem norma, sem garantia real, troca a cada 18 meses",
+  alternative: "Cadeira de marketplace (R$ 300 a 500)",
+  promise: "O que promete: preço baixo",
+  limitation:
+    "Barata na compra. Sem garantia de verdade e trocando a cada 18 meses.",
 };
 
-// TODO: validar a afirmação sobre conformidade com a NR-17.
 const ALT_2: ComparisonRow = {
   icon: Gamepad2,
   alternative: "Cadeira gamer ou de design",
-  promise: "Visual",
-  limitation: "Ergonomia de aparência, não de projeto; não atende NR-17",
+  promise: "O que promete: visual",
+  limitation:
+    "Bonita, mas confortável só na aparência. Não foi feita pra aguentar 8 horas por dia sentado.",
 };
 
 const ALT_3: ComparisonRow = {
   icon: Box,
-  alternative: "Compra avulsa sem instalação",
-  promise: "Resolver rápido",
-  limitation: "Você monta, ajusta e assume o risco sozinho",
+  alternative: "Compra avulsa, sem instalação",
+  promise: "O que promete: resolver rápido",
+  limitation: "Chega em caixa. Você monta, ajusta e assume o risco sozinho.",
 };
 
 const ALT_4: ComparisonRow = {
   icon: KeyRound,
   alternative: "Locação de mobiliário",
-  promise: "Baixo custo inicial",
-  limitation: "Paga para sempre e nunca é seu",
+  promise: "O que promete: gastar pouco no começo",
+  limitation: "Você paga todo mês pra sempre e a cadeira nunca vira sua.",
 };
 
 const alternatives: ComparisonRow[] = [ALT_1, ALT_2, ALT_3, ALT_4];
@@ -67,7 +68,7 @@ const CAVALETTI: ComparisonRow = {
   alternative: `Cavaletti via ${CLIENT_NAME}`,
   promise: "Solução completa",
   limitation:
-    "Ergonomia certificada, garantia de fábrica, projeto e instalação inclusos, especialista que entende de escritório.",
+    "Ergonomia de verdade e garantia de fábrica. Projeto e instalação já inclusos, com um especialista que entende de escritório do seu lado.",
 };
 
 export function ComparisonSection() {
