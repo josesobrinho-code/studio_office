@@ -441,6 +441,11 @@ a {
   text-wrap: balance;
 }
 
+.hero-video-carousel__intro-support {
+  font-size: 1.34rem;
+  max-width: 1180px;
+}
+
 .hero-video-carousel__intro-subtitle {
   color: rgba(255, 255, 255, 0.72);
   font-size: clamp(0.94rem, 1.05vw, 1.08rem);
@@ -448,6 +453,12 @@ a {
   line-height: 1.5;
   margin-top: 12px;
   max-width: 920px;
+}
+
+@media (min-width: 1200px) {
+  .hero-video-carousel__intro-support {
+    white-space: nowrap;
+  }
 }
 
 .hero-video-carousel__dot {
