@@ -6,19 +6,19 @@ import { ArrowDown, Check, X } from "lucide-react";
 const sectionCopy = {
   eyebrow: "O que você está comprando de verdade",
   titleLineOne: "Você não compra uma cadeira.",
-  titleLineTwo: "Compra 8 horas por dia de quem trabalha para você.",
+  titleLineTwo: "Compra 8 horas por dia de quem trabalha pra você.",
   support:
-    "Uma cadeira ruim não custa o preço da cadeira. Custa a hora do profissional que levanta com dor, perde foco e rende menos — todo dia, o ano inteiro. O gasto não está na etiqueta. Está no que ela tira de quem senta.",
+    "Uma cadeira ruim não custa o preço dela. Custa a hora do profissional que levanta com dor, perde o foco e rende menos. Todo dia, o ano inteiro. O gasto não aparece na etiqueta. Aparece no quanto ela tira de quem senta.",
   oldDecision: {
     label: "O jeito antigo de decidir",
-    statement: "Escolher pelo menor preço da compra.",
+    statement: "Escolher pela cadeira mais barata na hora de comprar.",
   },
   rightDecision: {
     label: "O jeito certo de decidir",
-    statement: "Escolher pelo menor custo do uso.",
+    statement: "Escolher pela cadeira que sai mais barata no dia a dia.",
   },
   bridge:
-    "Agora olhe para os produtos pelo custo do uso, não pelo preço da etiqueta.",
+    "Agora olha pros produtos pelo custo do uso, não pelo preço da etiqueta.",
 };
 
 export function ReframeSection() {
