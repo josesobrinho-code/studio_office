@@ -431,23 +431,40 @@ a {
 .hero-video-carousel__intro-support {
   color: rgba(255, 255, 255, 0.88);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
-  font-size: clamp(1.02rem, 1.22vw, 1.3rem);
+  font-size: 1.34rem;
   font-weight: 600;
   letter-spacing: 0;
   line-height: 1.45;
   margin: 26px auto 0;
-  max-width: 900px;
+  max-width: 1180px;
   text-wrap: balance;
 }
 
-.hero-video-carousel__intro-support {
-  font-size: 1.34rem;
-  max-width: 1180px;
-}
-
 @media (min-width: 1200px) {
+  .hero-video-carousel__intro-copy {
+    max-width: min(1660px, 94vw);
+  }
+
+  .hero-video-carousel__intro h1 {
+    font-size: 2.25rem;
+    max-width: none;
+    white-space: nowrap;
+  }
+
   .hero-video-carousel__intro-support {
     white-space: nowrap;
+  }
+}
+
+@media (min-width: 1440px) {
+  .hero-video-carousel__intro h1 {
+    font-size: 2.65rem;
+  }
+}
+
+@media (min-width: 1800px) {
+  .hero-video-carousel__intro h1 {
+    font-size: 3rem;
   }
 }
 
