@@ -14,21 +14,15 @@ const navItems = [
 
 export function Header() {
   const headerRef = useRef<HTMLElement | null>(null);
-  const hideTimer = useRef<number | null>(null);
   const isVisible = useRef(false);
-  const menuOpenRef = useRef(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const closeMenu = () => {
-    menuOpenRef.current = false;
     setMenuOpen(false);
   };
 
   const toggleMenu = () => {
-    setMenuOpen((current) => {
-      menuOpenRef.current = !current;
-      return !current;
-    });
+    setMenuOpen((current) => !current);
   };
 
   useEffect(() => {
@@ -38,15 +32,7 @@ export function Header() {
       return;
     }
 
-    const clearHideTimer = () => {
-      if (hideTimer.current) {
-        window.clearTimeout(hideTimer.current);
-        hideTimer.current = null;
-      }
-    };
-
     const mobileQuery = window.matchMedia("(max-width: 760px)");
-    let lastScrollY = window.scrollY;
 
     if (mobileQuery.matches) {
       gsap.set(header, { y: 0, autoAlpha: 1 });
@@ -56,7 +42,6 @@ export function Header() {
     }
 
     const conceal = () => {
-      clearHideTimer();
       if (!isVisible.current) {
         return;
       }
@@ -70,12 +55,8 @@ export function Header() {
       });
     };
 
-    const reveal = (temporary = false) => {
-      clearHideTimer();
+    const reveal = () => {
       if (isVisible.current) {
-        if (temporary) {
-          hideTimer.current = window.setTimeout(conceal, 1100);
-        }
         return;
       }
 
@@ -86,27 +67,6 @@ export function Header() {
         duration: 0.45,
         ease: "power3.out",
       });
-
-      if (temporary) {
-        hideTimer.current = window.setTimeout(conceal, 1100);
-      }
-    };
-
-    const syncWithScroll = () => {
-      if (!mobileQuery.matches) {
-        reveal(true);
-        return;
-      }
-
-      const nextScrollY = window.scrollY;
-
-      if (menuOpenRef.current || nextScrollY < 32 || nextScrollY < lastScrollY - 8) {
-        reveal();
-      } else if (nextScrollY > lastScrollY + 8) {
-        conceal();
-      }
-
-      lastScrollY = nextScrollY;
     };
 
     const syncWithPointer = (event: MouseEvent) => {
@@ -119,12 +79,9 @@ export function Header() {
       }
     };
 
-    window.addEventListener("scroll", syncWithScroll, { passive: true });
     window.addEventListener("mousemove", syncWithPointer, { passive: true });
 
     return () => {
-      clearHideTimer();
-      window.removeEventListener("scroll", syncWithScroll);
       window.removeEventListener("mousemove", syncWithPointer);
     };
   }, []);
