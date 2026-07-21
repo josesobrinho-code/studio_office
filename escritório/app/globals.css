@@ -33,6 +33,11 @@ h1,
 h2,
 h3 {
   font-family: var(--font-dm-serif-display), Georgia, serif;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 button,
@@ -420,6 +425,7 @@ a {
   line-height: 1.06;
   margin: 0;
   max-width: none;
+  text-wrap: balance;
 }
 
 .hero-video-carousel__intro-support,
@@ -432,6 +438,7 @@ a {
   line-height: 1.46;
   margin: 24px auto 0;
   max-width: 760px;
+  text-wrap: balance;
 }
 
 .hero-video-carousel__intro-subtitle {
