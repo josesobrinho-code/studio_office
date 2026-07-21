@@ -10,19 +10,13 @@ import {
   type LucideProps,
 } from "lucide-react";
 
-// TODO: preencher com dado da Previdência Social
-const STAT_AFASTAMENTO = "{{STAT_AFASTAMENTO}}";
-
-// TODO: preencher com dado da Previdência Social
-const COPY_AFASTAMENTO = "{{COPY_AFASTAMENTO}}";
-
 const sectionCopy = {
   title: "É só uma cadeira.",
   support:
-    "Foi o que se pensou na hora de economizar R$ 300 por posto. Dois anos depois: mecanismo travado, encosto que não volta, e o time trocando de lugar pra pegar a cadeira que ainda funciona.",
+    "Foi o que pensaram na hora de economizar R$ 300 por posto. Dois anos depois: mecanismo travado, encosto que não volta e o time trocando de mesa pra pegar a cadeira que ainda funciona.",
   turn:
-    "Uma Cavaletti Aura dura 8 anos de uso pesado. Diluída, isso dá menos por dia do que o café que o escritório serve de graça.",
-  cta: "Ver quanto custa equipar o meu escritório",
+    "Uma Cavaletti Aura dura 8 anos de uso pesado. No fim, sai menos por dia do que o café que o escritório serve de graça.",
+  cta: "Equipar o meu escritório",
 };
 
 type CostCard = {
@@ -40,27 +34,28 @@ const cards: CostCard[] = [
     value: { kind: "number", end: 4, suffix: "x" },
     label: "trocas em 6 anos",
     description:
-      "Cadeira de R$ 400 trocada a cada 18 meses = 4 compras, 4 fretes, 4 vezes o administrativo parado. A Cavaletti é uma compra, com garantia de fábrica.",
+      "Uma cadeira de R$ 400 dura uns 18 meses. Em 6 anos você compra ela 4 vezes, paga 4 fretes e para o administrativo 4 vezes. A Cavaletti você compra uma vez, com garantia de fábrica.",
   },
   {
     icon: UserMinus,
-    value: { kind: "text", text: STAT_AFASTAMENTO },
-    label: "custo de um afastamento",
-    description: COPY_AFASTAMENTO,
+    value: { kind: "number", end: 15, suffix: " dias" },
+    label: "saem do seu bolso",
+    description:
+      "Quando alguém se afasta por dor nas costas, os primeiros 15 dias de salário quem paga é a empresa, não o INSS. E problema de coluna é um dos que mais tiram gente do trabalho no Brasil.",
   },
   {
     icon: AlertTriangle,
-    value: { kind: "text", text: "NR-17" },
-    label: "item de fiscalização",
+    value: { kind: "text", text: "Por lei" },
+    label: "cadeira boa é obrigação",
     description:
-      "Mobiliário inadequado é item fiscalizável. Multa mais adequação emergencial custa mais do que fazer certo da primeira vez.",
+      "A lei do trabalho obriga a empresa a dar cadeira ajustável pra quem passa o dia sentado. Se o fiscal aparece e não está em ordem, é multa. E numa ação trabalhista, vira prova contra você.",
   },
   {
     icon: Clock,
     value: { kind: "number", end: 8, suffix: "h" },
     label: "por dia, todo dia",
     description:
-      "Quem levanta a cada 40 minutos pra descansar as costas não está entregando.",
+      "Quem levanta a cada 40 minutos pra aliviar as costas não está rendendo. E isso se repete todo dia, o ano inteiro.",
   },
 ];
 
@@ -196,7 +191,7 @@ export function CostSection() {
                 <h3 className="mt-3 text-lg font-semibold tracking-normal text-neutral-950">
                   {card.label}
                 </h3>
-                <p className="mt-3 line-clamp-4 text-sm leading-6 text-neutral-600">
+                <p className="mt-3 text-sm leading-6 text-neutral-600">
                   <CardDescription description={card.description} />
                 </p>
               </motion.li>
