@@ -314,10 +314,6 @@ export function VideoCarousel() {
             Ela quebra rápido, o time senta com dor e você compra tudo de novo
             daqui a um ano e meio.
           </p>
-          <p className="hero-video-carousel__intro-subtitle">
-            Cadeiras Cavaletti, com garantia de fábrica e a ergonomia que a lei
-            exige, montadas e ajustadas pro seu escritório.
-          </p>
         </div>
       </div>
     </div>
