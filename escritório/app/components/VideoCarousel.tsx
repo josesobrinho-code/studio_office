@@ -287,8 +287,8 @@ export function VideoCarousel() {
         <span aria-hidden="true">›</span>
       </button>
 
-      <a className="hero-video-carousel__cta" href="#produtos">
-        Conheça nossos produtos
+      <a className="hero-video-carousel__cta" href="#formulario">
+        Equipar meu escritório
       </a>
 
       <div className="hero-video-carousel__status">
@@ -309,14 +309,14 @@ export function VideoCarousel() {
 
       <div className="hero-video-carousel__intro">
         <div className="hero-video-carousel__intro-copy">
-          <h1>
-            Cadeira ruim não é economia.
-            <br />
-            É afastamento, retrabalho e troca todo ano.
-          </h1>
-          <p>
-            Cadeiras Cavaletti com garantia de fábrica, ajuste conforme NR-17 e
-            projeto sob medida para o seu escritório.
+          <h1>A cadeira mais barata é a que sai mais caro pro seu escritório.</h1>
+          <p className="hero-video-carousel__intro-support">
+            Ela quebra rápido, o time senta com dor e você compra tudo de novo
+            daqui a um ano e meio.
+          </p>
+          <p className="hero-video-carousel__intro-subtitle">
+            Cadeiras Cavaletti, com garantia de fábrica e a ergonomia que a lei
+            exige, montadas e ajustadas pro seu escritório.
           </p>
         </div>
       </div>
