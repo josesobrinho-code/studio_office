@@ -15,14 +15,17 @@ const TITULO = "QUEM SOMOS";
 const SUBTITULO =
   "Tem gente de verdade por trás de cada escritório que a gente equipa.";
 
-// TODO: preencher quem é o dono, o que faz e há quanto tempo atua.
-const PARAGRAFO_1 = "";
+// TODO: revisar a apresentação com o cliente.
+const PARAGRAFO_1 =
+  "A Studio Office fica em Anápolis e trabalha com um nome só: Cavaletti, uma das maiores fabricantes de cadeira profissional do Brasil.";
 
-// TODO: preencher a trajetória e por que entende de escritórios.
-const PARAGRAFO_2 = "";
+// TODO: revisar a apresentação com o cliente.
+const PARAGRAFO_2 =
+  "A gente não é marketplace nem loja que vende de tudo um pouco. Aqui você fala com quem entende de escritório, ajuda a escolher a cadeira certa pra cada pessoa do seu time e acompanha desde o pedido até a cadeira montada na sua sala.";
 
-// TODO: preencher como essa experiência se traduz no atendimento.
-const PARAGRAFO_3 = "";
+// TODO: revisar a apresentação com o cliente.
+const PARAGRAFO_3 =
+  "Se der qualquer problema depois, você sabe quem procurar. Tem endereço, tem nome e tem gente pra responder.";
 
 // TODO: preencher o nome real do dono.
 const NOME_DONO = "";
