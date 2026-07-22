@@ -170,7 +170,7 @@ export function ComparisonSection() {
         </motion.div>
 
         <motion.div
-          className="mt-10 flex flex-col items-start gap-6 border-t border-neutral-200 pt-8 lg:flex-row lg:items-center lg:justify-between"
+          className="mx-auto mt-10 flex w-full max-w-5xl flex-col items-start gap-6 border-t border-neutral-200 pt-8 lg:flex-row lg:items-center lg:justify-between lg:gap-10"
           initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
           transition={{
             delay: shouldReduceMotion ? 0 : 0.4,
