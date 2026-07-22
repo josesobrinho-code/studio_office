@@ -15,7 +15,7 @@ const sectionCopy = {
   support:
     "Foi o que pensaram na hora de economizar R$ 300 por posto. Dois anos depois: mecanismo travado, encosto que não volta e o time trocando de mesa pra pegar a cadeira que ainda funciona.",
   turn:
-    "Uma Cavaletti Aura dura 8 anos de uso pesado. No fim, sai menos por dia do que o café que o escritório serve de graça.",
+    "Uma Cavaletti Aura dura 6 anos de uso pesado. No fim, sai menos por dia do que o café que o escritório serve de graça.",
   cta: "Equipar o meu escritório",
 };
 
