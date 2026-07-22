@@ -95,7 +95,7 @@ export function ProofSection() {
   return (
     <section
       aria-labelledby="proof-section-title"
-      className="border-t border-neutral-200 bg-[#efede8] px-5 py-16 text-neutral-950 sm:px-8 sm:py-20 lg:px-12 lg:py-24"
+      className="bg-[#efede8] px-5 py-16 text-neutral-950 sm:px-8 sm:py-20 lg:px-12 lg:py-24"
     >
       <div className="mx-auto max-w-7xl">
         <motion.header

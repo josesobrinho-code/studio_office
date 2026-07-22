@@ -26,7 +26,7 @@ export function ReframeSection() {
   return (
     <section
       aria-labelledby="reframe-section-title"
-      className="border-t border-neutral-200 bg-[#efede8] px-5 py-16 text-neutral-950 sm:px-8 sm:py-20 lg:px-12 lg:py-24"
+      className="bg-[#efede8] px-5 py-16 text-neutral-950 sm:px-8 sm:py-20 lg:px-12 lg:py-24"
     >
       <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-16">
         <motion.div

@@ -62,7 +62,7 @@ export function AboutSection() {
   return (
     <section
       aria-labelledby="about-section-title"
-      className="border-t border-neutral-200 bg-[#f7f5f1] px-5 py-16 text-neutral-950 sm:px-8 sm:py-20 lg:px-12 lg:py-24"
+      className="bg-[#f7f5f1] px-5 py-16 text-neutral-950 sm:px-8 sm:py-20 lg:px-12 lg:py-24"
       id="quem-somos"
     >
       <div className="mx-auto grid max-w-7xl gap-10 sm:gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-center lg:gap-16">

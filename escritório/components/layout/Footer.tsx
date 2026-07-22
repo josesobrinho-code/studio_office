@@ -71,7 +71,7 @@ export function Footer() {
     .join(" · ");
 
   return (
-    <footer className="border-t border-white/12 bg-[#050505] px-5 pb-[max(2rem,env(safe-area-inset-bottom))] pt-14 text-white sm:px-8 sm:pt-16 lg:px-12 lg:pb-10 lg:pt-20">
+    <footer className="bg-[#050505] px-5 pb-[max(2rem,env(safe-area-inset-bottom))] pt-14 text-white sm:px-8 sm:pt-16 lg:px-12 lg:pb-10 lg:pt-20">
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col items-center gap-9 md:flex-row md:justify-between">
           <a

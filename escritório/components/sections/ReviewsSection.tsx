@@ -69,7 +69,7 @@ export function ReviewsSection() {
   return (
     <section
       aria-labelledby="reviews-section-title"
-      className="border-t border-neutral-200 bg-[#f7f5f1] px-5 py-16 text-neutral-950 sm:px-8 sm:py-20 lg:px-12 lg:py-24"
+      className="bg-[#f7f5f1] px-5 py-16 text-neutral-950 sm:px-8 sm:py-20 lg:px-12 lg:py-24"
       id="avaliacoes"
     >
       <div className="mx-auto max-w-7xl">
