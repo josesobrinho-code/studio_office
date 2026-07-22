@@ -199,7 +199,7 @@ export function CostSection() {
           })}
         </ul>
 
-        <div className="flex flex-col items-start gap-5 border-t border-neutral-200 pt-6 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex flex-col items-start gap-5 pt-6 lg:flex-row lg:items-center lg:justify-between">
           <p className="max-w-3xl text-lg leading-8 text-neutral-800 sm:text-xl">
             {sectionCopy.turn}
           </p>

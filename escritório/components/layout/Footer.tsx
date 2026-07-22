@@ -108,7 +108,7 @@ export function Footer() {
         {hasContact ? (
           <div
             aria-label={footerCopy.contactLabel}
-            className="mt-10 flex flex-col items-center gap-5 border-t border-white/12 pt-8 text-sm text-white/70 md:flex-row md:justify-between"
+            className="mt-10 flex flex-col items-center gap-5 pt-8 text-sm text-white/70 md:flex-row md:justify-between"
           >
             <div className="flex flex-col items-center gap-5 md:flex-row md:gap-7">
               {NUMERO_VENDEDOR ? (
@@ -155,7 +155,7 @@ export function Footer() {
           </div>
         ) : null}
 
-        <div className="mt-10 flex flex-col items-center gap-4 border-t border-white/12 pt-7 text-center text-xs leading-5 text-white/45 md:flex-row md:flex-wrap md:justify-between md:text-left">
+        <div className="mt-10 flex flex-col items-center gap-4 pt-7 text-center text-xs leading-5 text-white/45 md:flex-row md:flex-wrap md:justify-between md:text-left">
           <div className="flex flex-col items-center gap-2 md:items-start">
             {legalIdentity ? <p>{legalIdentity}</p> : null}
             <p>

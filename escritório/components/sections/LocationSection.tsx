@@ -58,9 +58,9 @@ export function LocationSection() {
             {sectionCopy.title}
           </h2>
 
-          <dl className="mt-9 border-y border-neutral-300">
+          <dl className="mt-9">
             {ENDERECO ? (
-              <div className="flex items-start gap-4 border-b border-neutral-200 py-5">
+              <div className="flex items-start gap-4 py-5">
                 <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-neutral-100 text-neutral-500">
                   <MapPin aria-hidden="true" className="h-4 w-4" />
                 </span>
@@ -76,7 +76,7 @@ export function LocationSection() {
             ) : null}
 
             {CIDADE_REGIAO ? (
-              <div className="flex items-start gap-4 border-b border-neutral-200 py-5 last:border-b-0">
+              <div className="flex items-start gap-4 py-5">
                 <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-neutral-100 text-neutral-500">
                   <MapPin aria-hidden="true" className="h-4 w-4" />
                 </span>

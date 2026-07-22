@@ -101,7 +101,7 @@ export function RiskSection() {
           </motion.div>
 
           <motion.div
-            className="border-y border-neutral-300 py-7"
+            className="py-7"
             initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
             transition={{
               delay: shouldReduceMotion ? 0 : 0.06,
@@ -128,7 +128,7 @@ export function RiskSection() {
         </div>
 
         {guaranteeItems.length > 0 ? (
-          <div className="mt-14 border-t border-neutral-200 pt-9">
+          <div className="mt-14 pt-9">
             <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
               <div>
                 <p className="text-sm font-semibold text-neutral-500">
@@ -178,7 +178,7 @@ export function RiskSection() {
         ) : null}
 
         <motion.div
-          className="mt-14 flex flex-col items-start gap-6 border-t border-neutral-200 pt-8 lg:flex-row lg:items-center lg:justify-between"
+          className="mt-14 flex flex-col items-start gap-6 pt-8 lg:flex-row lg:items-center lg:justify-between"
           initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
           transition={{ duration: shouldReduceMotion ? 0 : 0.4, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.3 }}

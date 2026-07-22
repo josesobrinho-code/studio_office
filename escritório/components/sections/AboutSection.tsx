@@ -141,7 +141,7 @@ export function AboutSection() {
           ) : null}
 
           {credibilityItems.length > 0 ? (
-            <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-3 border-y border-neutral-200 py-5 text-sm font-semibold text-neutral-700">
+            <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-3 py-5 text-sm font-semibold text-neutral-700">
               {credibilityItems.map((item) => (
                 <li key={item}>{item}</li>
               ))}

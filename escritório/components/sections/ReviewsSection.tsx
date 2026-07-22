@@ -74,7 +74,7 @@ export function ReviewsSection() {
     >
       <div className="mx-auto max-w-7xl">
         <motion.header
-          className="flex flex-col gap-7 border-b border-neutral-300 pb-10 md:flex-row md:items-end md:justify-between"
+          className="flex flex-col gap-7 pb-10 md:flex-row md:items-end md:justify-between"
           initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
           transition={{ duration: shouldReduceMotion ? 0 : 0.4, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.3 }}
@@ -141,7 +141,7 @@ export function ReviewsSection() {
                     <span className="h-3 w-[92%] rounded-full bg-neutral-100" />
                     <span className="h-3 w-[72%] rounded-full bg-neutral-100" />
                   </div>
-                  <div className="mt-auto border-t border-neutral-200 pt-5">
+                  <div className="mt-auto pt-5">
                     <span className="block h-3 w-28 rounded-full bg-neutral-200" />
                     <span className="mt-3 block h-2.5 w-20 rounded-full bg-neutral-100" />
                   </div>
@@ -175,7 +175,7 @@ export function ReviewsSection() {
                     <p>{review.texto}</p>
                   </blockquote>
 
-                  <div className="mt-8 border-t border-neutral-200 pt-5">
+                  <div className="mt-8 pt-5">
                     <p className="font-semibold text-neutral-950">
                       {review.nome}
                     </p>

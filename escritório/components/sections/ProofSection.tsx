@@ -145,7 +145,7 @@ export function ProofSection() {
 
         {hasSocialProof ? (
           <motion.div
-            className="mt-14 border-t border-neutral-300 pt-10"
+            className="mt-14 pt-10"
             initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
             transition={{ duration: shouldReduceMotion ? 0 : 0.4, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.2 }}
@@ -188,7 +188,7 @@ export function ProofSection() {
             ) : null}
 
             {LOGOS_CLIENTES.length > 0 ? (
-              <ul className="mt-8 flex flex-wrap items-center gap-8 border-y border-neutral-300 py-6">
+              <ul className="mt-8 flex flex-wrap items-center gap-8 py-6">
                 {LOGOS_CLIENTES.map((logo) => (
                   <li key={logo.src}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -229,7 +229,7 @@ export function ProofSection() {
         ) : null}
 
         <motion.div
-          className="mt-10 border-t border-neutral-300 pt-8"
+          className="mt-10 pt-8"
           initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
           transition={{
             delay: shouldReduceMotion ? 0 : credibilityPoints.length * 0.06,

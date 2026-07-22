@@ -155,10 +155,9 @@ export function ChairCard({
       <div
         className={
           mode === "desktop"
-            ? "absolute bottom-16 left-16 right-16 z-20 flex gap-5 border-t pt-6 md:items-center md:justify-between"
-            : "relative z-20 flex flex-col gap-3 border-t pt-4 sm:gap-5 sm:pt-6"
+            ? "absolute bottom-16 left-16 right-16 z-20 flex gap-5 pt-6 md:items-center md:justify-between"
+            : "relative z-20 flex flex-col gap-3 pt-4 sm:gap-5 sm:pt-6"
         }
-        style={{ borderColor: chair.theme.ring }}
       >
         <p className="text-sm font-medium" style={{ color: chair.theme.textMuted }}>
           {productsCopy.interactionHint}

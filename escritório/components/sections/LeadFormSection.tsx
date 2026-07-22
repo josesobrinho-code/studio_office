@@ -305,7 +305,7 @@ export function LeadFormSection() {
             {sectionCopy.subheadline}
           </p>
 
-          <ul className="mt-10 grid gap-4 border-t border-white/12 pt-8">
+          <ul className="mt-10 grid gap-4 pt-8">
             {trustPoints.map((point, index) => (
               <motion.li
                 className="flex items-center gap-4"
@@ -330,7 +330,7 @@ export function LeadFormSection() {
           viewport={{ once: true, amount: 0.2 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
         >
-          <div className="flex items-start justify-between gap-4 border-b border-neutral-200 pb-6">
+          <div className="flex items-start justify-between gap-4 pb-6">
             <div>
               <h3 className="text-2xl font-semibold tracking-normal">
                 {sectionCopy.formTitle}

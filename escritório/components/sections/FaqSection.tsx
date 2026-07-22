@@ -140,13 +140,12 @@ export function FaqSection() {
           </h2>
         </motion.header>
 
-        <ul className="mt-10 border-y border-neutral-300">
+        <ul className="mt-10">
           {faqItems.map((item, index) => {
             const isOpen = openItem === item.id;
 
             return (
               <motion.li
-                className="border-b border-neutral-200 last:border-b-0"
                 initial={shouldReduceMotion ? false : { opacity: 0, y: 12 }}
                 key={item.id}
                 transition={{
@@ -199,7 +198,7 @@ export function FaqSection() {
         </ul>
 
         <motion.div
-          className="mt-10 flex flex-col items-start gap-6 border-t border-neutral-200 pt-8 lg:flex-row lg:items-center lg:justify-between"
+          className="mt-10 flex flex-col items-start gap-6 pt-8 lg:flex-row lg:items-center lg:justify-between"
           initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
           transition={{
             delay: shouldReduceMotion ? 0 : faqItems.length * 0.06,
