@@ -46,7 +46,7 @@ const trustPoints = [
 const sectionCopy = {
   eyebrow: "Próximo passo",
   subheadline:
-    "Conte o tamanho do seu projeto. Um especialista vai entender sua necessidade e continuar a conversa pelo WhatsApp.",
+    "Conta pra gente o tamanho do seu projeto. Um especialista entende o que você precisa e continua a conversa pelo WhatsApp. Sem robô e sem formulário interminável.",
   formTitle: "Solicite seu orçamento",
   formDescription: "Leva menos de um minuto.",
   nameLabel: "Nome",
