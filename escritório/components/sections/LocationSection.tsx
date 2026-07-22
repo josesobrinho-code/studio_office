@@ -7,7 +7,8 @@ import { Clock3, MapPin } from "lucide-react";
 const ENDERECO = "";
 
 // TODO: confirmar se a cobertura inclui apenas Anápolis, Goiânia ou outras regiões de Goiás.
-const CIDADE_REGIAO = "Anápolis – GO";
+const CIDADE_REGIAO =
+  "Anápolis, GO. Condomínio Gênesis Office, na Av. Juscelino Kubitscheck.";
 
 // TODO: confirmar o horário de funcionamento e as condições para visita.
 const HORARIO = "";
@@ -18,6 +19,8 @@ const MAPA_EMBED_URL =
 const sectionCopy = {
   eyebrow: "Onde estamos",
   title: "Um negócio local, com endereço de verdade.",
+  support:
+    "Se precisar, você sabe onde nos achar e com quem falar. Nada de comprar de loja fantasma na internet.",
   addressLabel: "Endereço de atendimento",
   regionLabel: "Cidade e região",
   scheduleLabel: "Horário de funcionamento",
@@ -57,6 +60,9 @@ export function LocationSection() {
           >
             {sectionCopy.title}
           </h2>
+          <p className="mt-5 max-w-2xl text-lg leading-8 text-neutral-600">
+            {sectionCopy.support}
+          </p>
 
           <dl className="mt-9">
             {ENDERECO ? (
