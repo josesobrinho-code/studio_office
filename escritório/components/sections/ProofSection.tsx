@@ -11,18 +11,18 @@ import type { ComponentType } from "react";
 
 // TODO: confirmar a redação antes da publicação.
 const FABRICANTE_NACIONAL =
-  "Fabricante de assentos profissionais com trajetória iniciada em 1974.";
+  "Fabricante de cadeira profissional desde 1974. São mais de 50 anos fazendo só isso.";
 
 // TODO: confirmar quais certificações podem ser citadas para estes produtos.
 const CERTIFICACOES = "";
 
 // TODO: confirmar a redação antes da publicação.
 const PRESENCA =
-  "Rede de representantes e revendedores distribuída pelo Brasil e exterior.";
+  "Presente no Brasil inteiro e também fora dele, com rede própria de representantes.";
 
 // TODO: confirmar a redação antes da publicação.
 const AREAS_ATUACAO =
-  "Soluções para projetos corporativos, colaborativos e de saúde.";
+  "Cadeira pra todo tipo de ambiente: escritório, sala de reunião e área da saúde.";
 
 type Testimonial = {
   quote: string;
@@ -57,7 +57,6 @@ const NUMERO_ESCRITORIOS: number | null = null;
 const FOTOS_PROJETOS: ProjectPhoto[] = [];
 
 const sectionCopy = {
-  eyebrow: "A marca por trás das cadeiras",
   title:
     "Você não está comprando de uma loja qualquer. Está levando Cavaletti.",
   socialEyebrow: "Projetos e experiências reais",
@@ -104,9 +103,6 @@ export function ProofSection() {
           viewport={{ once: true, amount: 0.3 }}
           whileInView={{ opacity: 1, y: 0 }}
         >
-          <p className="text-sm font-semibold text-neutral-500">
-            {sectionCopy.eyebrow}
-          </p>
           <h2
             className="mt-4 max-w-4xl text-3xl font-semibold leading-tight tracking-normal sm:text-4xl md:text-5xl"
             id="proof-section-title"
