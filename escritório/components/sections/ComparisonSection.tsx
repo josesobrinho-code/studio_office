@@ -14,7 +14,6 @@ import type { ComponentType } from "react";
 const CLIENT_NAME = "Studio Office";
 
 const sectionCopy = {
-  eyebrow: "Por que a economia de hoje vira custo amanhã",
   title: "Você não comprou errado antes. Comprou no lugar errado.",
   recommendedBadge: "A escolha certa",
   closing:
@@ -32,7 +31,7 @@ type ComparisonRow = {
 // TODO: confirmar faixa de preço, garantia e ciclo médio de troca.
 const ALT_1: ComparisonRow = {
   icon: Store,
-  alternative: "Cadeira de marketplace (R$ 300 a 500)",
+  alternative: "Cadeira de marketplace",
   promise: "O que promete: preço baixo",
   limitation:
     "Barata na compra. Sem garantia de verdade e trocando a cada 18 meses.",
@@ -86,11 +85,8 @@ export function ComparisonSection() {
           viewport={{ once: true, amount: 0.3 }}
           whileInView={{ opacity: 1, y: 0 }}
         >
-          <p className="text-sm font-semibold text-neutral-500">
-            {sectionCopy.eyebrow}
-          </p>
           <h2
-            className="mt-4 max-w-4xl text-3xl font-semibold leading-tight tracking-normal sm:text-4xl md:text-5xl"
+            className="max-w-4xl text-3xl font-semibold leading-tight tracking-normal sm:text-4xl md:text-5xl"
             id="comparison-section-title"
           >
             {sectionCopy.title}
