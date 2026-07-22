@@ -76,7 +76,7 @@ export function ComparisonSection() {
   return (
     <section
       aria-labelledby="comparison-section-title"
-      className="bg-[#f7f5f1] px-5 py-16 text-neutral-950 sm:px-8 sm:py-20 lg:px-12 lg:py-24"
+      className="bg-[#f7f5f1] px-5 py-16 text-neutral-950 sm:px-8 sm:py-20 lg:px-12 lg:pb-0 lg:pt-24"
     >
       <div className="mx-auto max-w-7xl">
         <motion.header
@@ -170,7 +170,7 @@ export function ComparisonSection() {
         </motion.div>
 
         <motion.div
-          className="mx-auto mt-10 flex w-full max-w-5xl flex-col items-start gap-6 border-t border-neutral-200 pt-8 lg:flex-row lg:items-center lg:justify-between lg:gap-10"
+          className="mx-auto mt-10 flex w-full max-w-5xl flex-col items-start gap-6 border-t border-neutral-200 pt-8 lg:flex-row lg:items-center lg:justify-between lg:gap-10 lg:py-16"
           initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
           transition={{
             delay: shouldReduceMotion ? 0 : 0.4,
