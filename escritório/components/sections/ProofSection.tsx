@@ -57,8 +57,8 @@ const NUMERO_ESCRITORIOS: number | null = null;
 const FOTOS_PROJETOS: ProjectPhoto[] = [];
 
 const sectionCopy = {
-  title:
-    "Você não está comprando de uma loja qualquer. Está levando Cavaletti.",
+  title: "Você não está comprando de uma loja qualquer.",
+  titleHighlight: "Está levando Cavaletti.",
   socialEyebrow: "Projetos e experiências reais",
   officesLabel: "escritórios equipados",
   cta: "Quero equipar meu escritório",
@@ -107,7 +107,10 @@ export function ProofSection() {
             className="mt-4 max-w-4xl text-3xl font-semibold leading-tight tracking-normal sm:text-4xl md:text-5xl"
             id="proof-section-title"
           >
-            {sectionCopy.title}
+            {sectionCopy.title}{" "}
+            <span className="text-[#b01b12]">
+              {sectionCopy.titleHighlight}
+            </span>
           </h2>
         </motion.header>
 
@@ -128,7 +131,7 @@ export function ProofSection() {
                 viewport={{ once: true, amount: 0.3 }}
                 whileInView={{ opacity: 1, y: 0 }}
               >
-                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-neutral-100 text-neutral-500">
+                <span className="mx-auto flex h-11 w-11 items-center justify-center rounded-full bg-neutral-100 text-neutral-500">
                   <Icon aria-hidden="true" className="h-5 w-5" strokeWidth={1.7} />
                 </span>
                 <p className="mt-6 text-lg font-semibold leading-7 text-neutral-800">
