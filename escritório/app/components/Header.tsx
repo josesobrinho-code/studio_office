@@ -1,15 +1,16 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 
 const navItems = [
-  { label: "QUEM SOMOS", href: "#quem-somos" },
-  { label: "PRODUTOS", href: "#produtos" },
-  { label: "FALE CONOSCO", href: "#formulario" },
-  { label: "AVALIAÇÕES", href: "#avaliacoes" },
-  { label: "LOCALIZAÇÃO", href: "#localizacao" },
+  { label: "QUEM SOMOS", href: "/#quem-somos" },
+  { label: "PRODUTOS", href: "/catalogo" },
+  { label: "FALE CONOSCO", href: "/#formulario" },
+  { label: "AVALIAÇÕES", href: "/#avaliacoes" },
+  { label: "LOCALIZAÇÃO", href: "/#localizacao" },
 ];
 
 export function Header() {
@@ -94,7 +95,7 @@ export function Header() {
       }}
       ref={headerRef}
     >
-      <a className="site-header__brand" href="#topo" aria-label="Studio Office">
+      <Link className="site-header__brand" href="/" aria-label="Studio Office">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/logo-studio-office.webp"
@@ -102,7 +103,7 @@ export function Header() {
           width="170"
           height="65"
         />
-      </a>
+      </Link>
 
       <button
         aria-controls="site-header-navigation"
@@ -125,14 +126,14 @@ export function Header() {
         id="site-header-navigation"
       >
         {navItems.map((item) => (
-          <a
+          <Link
             className="site-header__link"
             href={item.href}
             key={item.href}
             onClick={closeMenu}
           >
             {item.label}
-          </a>
+          </Link>
         ))}
       </nav>
     </header>

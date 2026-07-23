@@ -3,6 +3,7 @@ import {
   MapPin,
   MessageCircle,
 } from "lucide-react";
+import Link from "next/link";
 
 const BRAND_NAME = "Studio Office";
 const LOGO_SRC = "/logo-studio-office.webp";
@@ -34,10 +35,10 @@ type SocialLink = {
 const SOCIAIS: SocialLink[] = [];
 
 const navigation = [
-  { href: "#produtos", label: "Produtos" },
-  { href: "#quem-somos", label: "Quem somos" },
-  { href: "#localizacao", label: "Localização" },
-  { href: "#formulario", label: "Fale conosco" },
+  { href: "/catalogo", label: "Produtos" },
+  { href: "/#quem-somos", label: "Quem somos" },
+  { href: "/#localizacao", label: "Localização" },
+  { href: "/#formulario", label: "Fale conosco" },
 ];
 
 const footerCopy = {
@@ -74,10 +75,10 @@ export function Footer() {
     <footer className="bg-[#050505] px-5 pb-[max(2rem,env(safe-area-inset-bottom))] pt-14 text-white sm:px-8 sm:pt-16 lg:px-12 lg:pb-10 lg:pt-20">
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col items-center gap-9 md:flex-row md:justify-between">
-          <a
+          <Link
             aria-label={`${BRAND_NAME}, voltar ao início`}
             className="inline-flex focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-            href="#topo"
+            href="/"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -87,20 +88,20 @@ export function Footer() {
               src={LOGO_SRC}
               width="170"
             />
-          </a>
+          </Link>
 
           <nav
             aria-label={footerCopy.navigationLabel}
             className="flex flex-wrap justify-center gap-x-7 gap-y-4 md:justify-end"
           >
             {navigation.map((item) => (
-              <a
+              <Link
                 className="text-sm font-medium opacity-60 transition-opacity hover:opacity-100 focus-visible:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
                 href={item.href}
                 key={item.href}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
         </div>
