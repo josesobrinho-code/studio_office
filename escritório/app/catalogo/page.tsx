@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Header } from "../components/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CatalogCard } from "@/components/catalog/CatalogCard";
+import { CostSection } from "../(components)/sections/CostSection";
 import {
   catalogCategories,
   catalogCopy,
@@ -59,6 +60,8 @@ export default function CatalogoPage() {
             </section>
           );
         })}
+
+        <CostSection />
       </main>
       <Footer />
     </>
