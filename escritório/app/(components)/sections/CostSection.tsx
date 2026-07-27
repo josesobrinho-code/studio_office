@@ -34,7 +34,7 @@ const cards: CostCard[] = [
     value: { kind: "number", end: 4, suffix: "x" },
     label: "trocas em 6 anos",
     description:
-      "Uma cadeira de R$ 400 dura uns 18 meses. Em 6 anos você compra ela 4 vezes, paga 4 fretes e para o administrativo 4 vezes. A Cavaletti você compra uma vez, com garantia de fábrica.",
+      "Uma cadeira de R$ 400 dura em média 18 meses. Em 6 anos você compra ela 4 vezes, paga 4 fretes e para o administrativo 4 vezes. A Cavaletti você compra uma vez, com garantia de fábrica.",
   },
   {
     icon: UserMinus,

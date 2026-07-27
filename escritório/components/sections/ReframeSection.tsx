@@ -10,14 +10,14 @@ const sectionCopy = {
     "Uma cadeira ruim não custa o preço dela. Custa a hora do profissional que levanta com dor, perde o foco e rende menos. Todo dia, o ano inteiro. O gasto não aparece na etiqueta. Aparece no quanto ela tira de quem senta.",
   oldDecision: {
     label: "O jeito antigo de decidir",
-    statement: "Escolher pela cadeira mais barata na hora de comprar.",
+    statement: "Escolher pelo menor preço.",
   },
   rightDecision: {
     label: "O jeito certo de decidir",
-    statement: "Escolher pela cadeira que sai mais barata no dia a dia.",
+    statement: "Escolher pelo menor custo ao longo do tempo.",
   },
   bridge:
-    "Agora olha pros produtos pelo custo do uso, não pelo preço da etiqueta.",
+    "Avalie uma cadeira pelo custo de toda a sua vida útil, e não apenas pelo preço da etiqueta.",
 };
 
 export function ReframeSection() {

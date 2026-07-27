@@ -309,10 +309,10 @@ export function VideoCarousel() {
 
       <div className="hero-video-carousel__intro">
         <div className="hero-video-carousel__intro-copy">
-          <h1>A cadeira mais barata é a que sai mais caro pro seu escritório.</h1>
+          <h1>A cadeira mais econômica quase nunca é a que custa menos.</h1>
           <p className="hero-video-carousel__intro-support">
-            Ela quebra rápido, o time senta com dor e você compra tudo de novo
-            daqui a um ano e meio.
+            Ela pode parecer uma boa escolha hoje, mas o verdadeiro custo
+            aparece com o tempo: desconforto, manutenção e substituição precoce.
           </p>
         </div>
       </div>
