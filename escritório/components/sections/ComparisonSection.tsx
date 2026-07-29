@@ -67,7 +67,7 @@ const CAVALETTI: ComparisonRow = {
   alternative: `Cavaletti via ${CLIENT_NAME}`,
   promise: "Solução completa",
   limitation:
-    "Aqui você compra a cadeira uma vez e esquece o assunto. A gente entende seu escritório, indica o modelo certo pra cada pessoa, entrega montado e ainda responde por qualquer defeito com garantia de fábrica. Sem troca todo ano, sem risco no seu colo.",
+    "Aqui você compra a cadeira uma vez e esquece o assunto. A gente entende seu escritório, indica o modelo certo pra cada pessoa, entrega montado e ainda responde por qualquer defeito com 6 anos de garantia. Sem troca todo ano, sem risco no seu colo.",
 };
 
 export function ComparisonSection() {

@@ -12,9 +12,8 @@ const PRAZO_ENTREGA =
 const NOTA_FISCAL =
   "A emissão de nota fiscal e as condições para CNPJ serão confirmadas antes do fechamento.";
 
-// TODO: confirmar prazo e cobertura da garantia.
 const GARANTIA =
-  "O prazo, a cobertura e o processo de acionamento da garantia serão detalhados no orçamento.";
+  "Toda cadeira Cavaletti possui 6 anos de garantia. Se der defeito, a Studio Office acompanha o acionamento com a fábrica.";
 
 // TODO: confirmar condições de montagem e instalação.
 const INSTALACAO =

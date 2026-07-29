@@ -5,6 +5,7 @@ import {
   Armchair,
   ArrowRight,
   CheckCircle2,
+  Mail,
   MessageCircle,
   Phone,
   ShieldCheck,
@@ -17,8 +18,9 @@ import {
   useState,
 } from "react";
 
-// TODO: preencher no formato 55DDDNUMERO, sem espaços ou símbolos.
-const NUMERO_VENDEDOR = "";
+const LINK_WHATSAPP = "https://wa.me/556260002345";
+
+const NUMERO_VENDEDOR = "556260002345";
 
 // TODO: preencher com a URL do webhook n8n do cliente.
 const WEBHOOK_URL = "";
@@ -28,8 +30,6 @@ const TRACKING: { metaPixelEvent: string; gtmEvent: string } = {
   metaPixelEvent: "",
   gtmEvent: "",
 };
-
-// TODO: adicionar empresa ou e-mail somente se o cliente solicitar.
 
 // TODO: revisar o texto de privacidade com o cliente antes da publicação.
 const TEXTO_LGPD =
@@ -53,6 +53,8 @@ const sectionCopy = {
   namePlaceholder: "Como podemos chamar você?",
   whatsappLabel: "WhatsApp",
   whatsappPlaceholder: "(00) 00000-0000",
+  emailLabel: "Gmail",
+  emailPlaceholder: "seunome@gmail.com",
   quantityLabel: "Quantidade estimada de cadeiras",
   submit: "Falar com um especialista",
   submitting: "Enviando...",
@@ -64,7 +66,7 @@ const sectionCopy = {
 const quantityOptions = ["1–4", "5–15", "16–30", "31–50", "50+"] as const;
 
 type Quantity = (typeof quantityOptions)[number];
-type FieldName = "nome" | "whatsapp" | "quantidade";
+type FieldName = "nome" | "whatsapp" | "email" | "quantidade";
 type FormErrors = Partial<Record<FieldName, string>>;
 
 type UtmParams = {
@@ -78,6 +80,7 @@ type UtmParams = {
 type LeadPayload = {
   nome: string;
   whatsapp: string;
+  email: string;
   quantidade: Quantity;
   origem: string;
   utms: UtmParams;
@@ -163,6 +166,25 @@ function dispararConversao(payload: LeadPayload) {
   }
 }
 
+function construirLinkWhatsApp(payload: LeadPayload) {
+  const message = [
+    `Olá! Sou ${payload.nome}.`,
+    `Quero um orçamento para ${payload.quantidade} cadeiras.`,
+    `Meu WhatsApp para contato é ${payload.whatsapp}.`,
+    `Meu Gmail é ${payload.email}.`,
+  ].join(" ");
+
+  if (LINK_WHATSAPP) {
+    const url = new URL(LINK_WHATSAPP);
+    url.searchParams.set("text", message);
+    return url.toString();
+  }
+
+  if (!NUMERO_VENDEDOR) return "";
+
+  return `https://wa.me/${NUMERO_VENDEDOR}?text=${encodeURIComponent(message)}`;
+}
+
 async function persistirLead(payload: LeadPayload) {
   if (!WEBHOOK_URL) return;
 
@@ -199,12 +221,14 @@ export function LeadFormSection() {
   const shouldReduceMotion = Boolean(useReducedMotion());
   const [nome, setNome] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
+  const [email, setEmail] = useState("");
   const [quantidade, setQuantidade] = useState<Quantity | "">("");
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const nomeRef = useRef<HTMLInputElement>(null);
   const whatsappRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
   const quantidadeRef = useRef<HTMLDivElement>(null);
   const utmsRef = useRef<UtmParams>(emptyUtms);
 
@@ -215,16 +239,20 @@ export function LeadFormSection() {
   const validate = () => {
     const nextErrors: FormErrors = {};
     const whatsappDigits = whatsapp.replace(/\D/g, "");
+    const trimmedEmail = email.trim();
 
     if (!nome.trim()) nextErrors.nome = "Informe seu nome.";
     if (whatsappDigits.length < 10) {
       nextErrors.whatsapp = "Informe um WhatsApp com DDD.";
     }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
+      nextErrors.email = "Informe um Gmail válido.";
+    }
     if (!quantidade) nextErrors.quantidade = "Selecione uma faixa.";
 
     setErrors(nextErrors);
 
-    const firstInvalid = (["nome", "whatsapp", "quantidade"] as const).find(
+    const firstInvalid = (["nome", "whatsapp", "email", "quantidade"] as const).find(
       (field) => nextErrors[field],
     );
 
@@ -232,6 +260,7 @@ export function LeadFormSection() {
       const refs = {
         nome: nomeRef,
         whatsapp: whatsappRef,
+        email: emailRef,
         quantidade: quantidadeRef,
       };
       requestAnimationFrame(() => refs[firstInvalid].current?.focus());
@@ -252,6 +281,7 @@ export function LeadFormSection() {
     const payload: LeadPayload = {
       nome: nome.trim(),
       whatsapp: whatsapp.replace(/\D/g, ""),
+      email: email.trim(),
       quantidade,
       origem: `${window.location.origin}${window.location.pathname}`,
       utms: utmsRef.current,
@@ -260,14 +290,15 @@ export function LeadFormSection() {
     dispararConversao(payload);
     void persistirLead(payload);
 
-    if (!NUMERO_VENDEDOR) {
+    const whatsappUrl = construirLinkWhatsApp(payload);
+
+    if (!whatsappUrl) {
       setSubmitError(sectionCopy.configurationError);
       setIsSubmitting(false);
       return;
     }
 
-    const message = `Olá! Sou ${payload.nome}, quero um orçamento para ${payload.quantidade} cadeiras.`;
-    window.location.href = `https://wa.me/${NUMERO_VENDEDOR}?text=${encodeURIComponent(message)}`;
+    window.location.href = whatsappUrl;
   };
 
   return (
@@ -429,9 +460,51 @@ export function LeadFormSection() {
             </motion.div>
 
             <motion.div {...fieldEntrance(shouldReduceMotion, 0.18)}>
-              <label className="flex items-center gap-2 text-sm font-semibold">
+              <label
+                className="flex items-center gap-2 text-sm font-semibold"
+                htmlFor="lead-email"
+              >
                 <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-neutral-950 text-[0.65rem] font-bold text-white">
                   3
+                </span>
+                {sectionCopy.emailLabel}
+              </label>
+              <div className="relative mt-2">
+                <Mail
+                  aria-hidden="true"
+                  className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400"
+                />
+                <input
+                  aria-describedby={errors.email ? "lead-email-error" : undefined}
+                  aria-invalid={Boolean(errors.email)}
+                  autoComplete="email"
+                  className="min-h-12 w-full rounded-xl border border-neutral-300 bg-white pl-11 pr-4 text-base outline-none transition placeholder:text-neutral-400 focus:border-neutral-950 focus:ring-2 focus:ring-neutral-950/10"
+                  id="lead-email"
+                  inputMode="email"
+                  name="email"
+                  onChange={(event) => {
+                    setEmail(event.target.value);
+                    if (errors.email) {
+                      setErrors((current) => ({ ...current, email: undefined }));
+                    }
+                  }}
+                  placeholder={sectionCopy.emailPlaceholder}
+                  ref={emailRef}
+                  type="email"
+                  value={email}
+                />
+              </div>
+              {errors.email ? (
+                <p className="mt-2 text-sm text-red-700" id="lead-email-error">
+                  {errors.email}
+                </p>
+              ) : null}
+            </motion.div>
+
+            <motion.div {...fieldEntrance(shouldReduceMotion, 0.24)}>
+              <label className="flex items-center gap-2 text-sm font-semibold">
+                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-neutral-950 text-[0.65rem] font-bold text-white">
+                  4
                 </span>
                 {sectionCopy.quantityLabel}
               </label>
@@ -485,7 +558,7 @@ export function LeadFormSection() {
             </motion.div>
           </div>
 
-          <motion.div {...fieldEntrance(shouldReduceMotion, 0.24)}>
+          <motion.div {...fieldEntrance(shouldReduceMotion, 0.3)}>
             <button
               className="group mt-8 inline-flex min-h-14 w-full cursor-pointer items-center justify-center gap-3 rounded-full bg-neutral-950 px-6 py-4 text-base font-semibold text-white transition hover:-translate-y-0.5 hover:bg-neutral-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-950 disabled:cursor-wait disabled:opacity-70"
               disabled={isSubmitting}

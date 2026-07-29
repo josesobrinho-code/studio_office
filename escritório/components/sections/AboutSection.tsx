@@ -3,10 +3,9 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { Building2 } from "lucide-react";
 
-// TODO: preencher com o caminho público da foto do dono.
-const FOTO_DONO = "";
+const FOTO_DONO = "/studio-office-showroom.jpeg";
 
-const FOTO_DONO_ALT = "Retrato do responsável pela Studio Office";
+const FOTO_DONO_ALT = "Ambiente interno da Studio Office com cadeiras Cavaletti em exposição";
 
 // TODO: revisar o título com o cliente.
 const TITULO = "QUEM SOMOS";
@@ -77,7 +76,7 @@ export function AboutSection() {
             /* eslint-disable-next-line @next/next/no-img-element */
             <img
               alt={FOTO_DONO_ALT}
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover object-[10%_center]"
               decoding="async"
               height={1500}
               loading="lazy"

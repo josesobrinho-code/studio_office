@@ -15,7 +15,7 @@ const sectionCopy = {
   support:
     "Foi o que pensaram na hora de economizar R$ 300 por posto. Dois anos depois: mecanismo travado, encosto que não volta e o time trocando de mesa pra pegar a cadeira que ainda funciona.",
   turn:
-    "Uma Cavaletti Aura dura pelo menos 6 anos de uso pesado. No fim, sai menos por dia do que o café que o escritório serve de graça.",
+    "Uma cadeira Cavaletti possui 6 anos de garantia. No fim, sai menos por dia do que o café que o escritório serve de graça.",
   cta: "Equipar o meu escritório",
 };
 
@@ -34,7 +34,7 @@ const cards: CostCard[] = [
     value: { kind: "number", end: 4, suffix: "x" },
     label: "trocas em 6 anos",
     description:
-      "Uma cadeira de R$ 400 dura em média 18 meses. Em 6 anos você compra ela 4 vezes, paga 4 fretes e para o administrativo 4 vezes. A Cavaletti você compra uma vez, com garantia de fábrica.",
+      "Uma cadeira de R$ 400 dura em média 18 meses. Em 6 anos você compra ela 4 vezes, paga 4 fretes e para o administrativo 4 vezes. A Cavaletti você compra uma vez, com 6 anos de garantia.",
   },
   {
     icon: UserMinus,

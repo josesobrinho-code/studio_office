@@ -22,10 +22,9 @@ const STATUS_REVENDA =
 // TODO: confirmar quais certificações citar.
 const CERTIFICACOES: string[] = [];
 
-// TODO: confirmar prazo e condições da garantia de fábrica.
 const GARANTIA_ANOS: GuaranteeContent | null = {
-  title: "Garantia de fábrica",
-  description: "Condições conforme a política vigente da fabricante.",
+  title: "6 anos de garantia",
+  description: "Toda cadeira Cavaletti possui garantia de fábrica por 6 anos.",
 };
 
 // TODO: confirmar se a instalação está inclusa.
