@@ -8,8 +8,7 @@ import Link from "next/link";
 const BRAND_NAME = "Studio Office";
 const LOGO_SRC = "/logo-studio-office.webp";
 
-// TODO: usar o mesmo número confirmado no formulário, no formato 55DDDNUMERO.
-const NUMERO_VENDEDOR = "";
+const NUMERO_VENDEDOR = "556260002345";
 
 // TODO: preencher somente com o endereço comercial resumido.
 const ENDERECO_CURTO = "";

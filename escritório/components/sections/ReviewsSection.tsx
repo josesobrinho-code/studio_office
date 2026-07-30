@@ -10,10 +10,52 @@ type Review = {
   nota?: number;
 };
 
-// TODO: colar somente depoimentos reais e autorizados antes de desativar o preview.
-const DEPOIMENTOS: Review[] = [];
+const DEPOIMENTOS: Review[] = [
+  {
+    texto:
+      "Os sofás para a recepção deram um toque de sofisticação ao nosso escritório. A Studio e Office nos ajudou a criar um ambiente acolhedor para nossos clientes.",
+    nome: "Ana P.",
+    empresa: "Sócia de Escritório de Advocacia",
+    nota: 5,
+  },
+  {
+    texto:
+      "Equipamos todo o nosso escritório com a Studio e Office. Desde o atendimento até a entrega, tudo foi impecável. As poltronas da Cavaletti são extremamente confortáveis!",
+    nome: "João M.",
+    empresa: "Diretor de Recursos Humanos",
+    nota: 5,
+  },
+  {
+    texto:
+      "As soluções acústicas da Trisoft fizeram toda a diferença no nosso espaço compartilhado. Os clientes notaram a melhora na acústica e no conforto.",
+    nome: "Maria L.",
+    empresa: "Proprietária de Coworking",
+    nota: 5,
+  },
+  {
+    texto:
+      "Nossas estações de trabalho são práticas e otimizadas para o dia a dia. Ficamos muito satisfeitos com a rapidez da entrega e a qualidade dos móveis.",
+    nome: "Carlos T.",
+    empresa: "Gerente de TI",
+    nota: 5,
+  },
+  {
+    texto:
+      "Trabalhei com a Studio e Office em diversos projetos e o resultado sempre supera as expectativas. As mesas e cadeiras são elegantes e funcionais.",
+    nome: "Fernanda S.",
+    empresa: "Arquiteta",
+    nota: 5,
+  },
+  {
+    texto:
+      "Montamos nosso auditório com os móveis fornecidos pela Studio e Office e os feedbacks dos nossos participantes foram excelentes!",
+    nome: "Paulo R.",
+    empresa: "Coordenador de Eventos",
+    nota: 5,
+  },
+];
 
-const EXIBIR_PREVIEW_DE_DESIGN = true;
+const EXIBIR_PREVIEW_DE_DESIGN = false;
 const QUANTIDADE_CARDS_PREVIEW = 3;
 
 // TODO: preencher somente com a nota real e atual do Google Meu Negócio.

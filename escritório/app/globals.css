@@ -7,6 +7,8 @@
   --paper: #f4f1ec;
   --muted: #d8d0c4;
   --line: rgba(255, 255, 255, 0.18);
+  --font-dm-sans: "DM Sans", "Inter", Arial, Helvetica, sans-serif;
+  --font-dm-serif-display: "DM Serif Display", Georgia, "Times New Roman", serif;
 }
 
 @theme inline {
