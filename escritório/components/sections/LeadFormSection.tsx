@@ -25,11 +25,18 @@ const NUMERO_VENDEDOR = "556260002345";
 // TODO: preencher com a URL do webhook n8n do cliente.
 const WEBHOOK_URL = "";
 
-// TODO: confirmar se o projeto usará Meta Pixel, GTM ou ambos e preencher os eventos.
-const TRACKING: { metaPixelEvent: string; gtmEvent: string } = {
+// Eventos enviados ao dataLayer, consumidos pelo GTM (container GTM-TD7HWT3C).
+// TODO: preencher metaPixelEvent apenas se o Meta Pixel for instalado; hoje o
+// rastreamento é só via GTM.
+const TRACKING = {
   metaPixelEvent: "",
-  gtmEvent: "",
+  gtmEventStart: "form_start",
+  gtmEventSubmit: "form_submit",
 };
+
+// Tempo máximo de espera pelo GTM antes de seguir para o WhatsApp. O envio
+// redireciona a página, e sem essa espera a tag não chega a disparar.
+const EVENT_TIMEOUT_MS = 1200;
 
 // TODO: revisar o texto de privacidade com o cliente antes da publicação.
 const TEXTO_LGPD =
@@ -149,21 +156,63 @@ function captureUtms() {
   return utms;
 }
 
-function dispararConversao(payload: LeadPayload) {
+/**
+ * Empurra um evento para o dataLayer.
+ *
+ * Cria o array se ele ainda não existir: o GTM carrega com strategy
+ * "afterInteractive" e o visitante pode interagir com o formulário antes disso.
+ * O GTM processa o que já estiver na fila assim que sobe, então nada se perde.
+ */
+function pushDataLayer(event: string, data: Record<string, unknown> = {}) {
+  if (!event) return;
+
+  const trackingWindow = window as TrackingWindow;
+  trackingWindow.dataLayer = trackingWindow.dataLayer ?? [];
+  trackingWindow.dataLayer.push({ event, ...data });
+}
+
+/** Dispara uma única vez, no primeiro contato do visitante com o formulário. */
+function dispararInicioFormulario(origem: string, utms: UtmParams) {
+  pushDataLayer(TRACKING.gtmEventStart, { origem, utms });
+}
+
+/**
+ * Dispara a conversão e só então executa `seguir` (o redirect para o WhatsApp).
+ *
+ * O eventCallback do GTM avisa quando as tags do evento terminaram. Sem essa
+ * espera, o redirect descarregaria a página antes da tag ser enviada e a
+ * conversão se perderia. O timeout garante que o visitante siga mesmo se o GTM
+ * estiver bloqueado (adblock) ou não tiver carregado.
+ */
+function dispararConversao(
+  payload: LeadPayload,
+  seguir: () => void,
+) {
   const trackingWindow = window as TrackingWindow;
 
   if (TRACKING.metaPixelEvent && trackingWindow.fbq) {
     trackingWindow.fbq("track", TRACKING.metaPixelEvent);
   }
 
-  if (TRACKING.gtmEvent && trackingWindow.dataLayer) {
-    trackingWindow.dataLayer.push({
-      event: TRACKING.gtmEvent,
-      quantidade: payload.quantidade,
-      origem: payload.origem,
-      utms: payload.utms,
-    });
-  }
+  let jaSeguiu = false;
+  const seguirUmaVez = () => {
+    if (jaSeguiu) return;
+    jaSeguiu = true;
+    seguir();
+  };
+
+  const timer = window.setTimeout(seguirUmaVez, EVENT_TIMEOUT_MS);
+
+  pushDataLayer(TRACKING.gtmEventSubmit, {
+    quantidade: payload.quantidade,
+    origem: payload.origem,
+    utms: payload.utms,
+    eventTimeout: EVENT_TIMEOUT_MS,
+    eventCallback: () => {
+      window.clearTimeout(timer);
+      seguirUmaVez();
+    },
+  });
 }
 
 function construirLinkWhatsApp(payload: LeadPayload) {
@@ -231,10 +280,24 @@ export function LeadFormSection() {
   const emailRef = useRef<HTMLInputElement>(null);
   const quantidadeRef = useRef<HTMLDivElement>(null);
   const utmsRef = useRef<UtmParams>(emptyUtms);
+  const inicioDisparadoRef = useRef(false);
 
   useEffect(() => {
     utmsRef.current = captureUtms();
   }, []);
+
+  // Primeiro contato com qualquer campo do formulário. O onFocus no <form>
+  // aproveita o bubbling, então cobre inputs e seletor sem instrumentar campo a
+  // campo. O ref garante um único disparo por sessão de página.
+  const handleInicioFormulario = () => {
+    if (inicioDisparadoRef.current) return;
+    inicioDisparadoRef.current = true;
+
+    dispararInicioFormulario(
+      `${window.location.origin}${window.location.pathname}`,
+      utmsRef.current,
+    );
+  };
 
   const validate = () => {
     const nextErrors: FormErrors = {};
@@ -276,8 +339,6 @@ export function LeadFormSection() {
 
     if (!validate() || !quantidade) return;
 
-    setIsSubmitting(true);
-
     const payload: LeadPayload = {
       nome: nome.trim(),
       whatsapp: whatsapp.replace(/\D/g, ""),
@@ -287,18 +348,20 @@ export function LeadFormSection() {
       utms: utmsRef.current,
     };
 
-    dispararConversao(payload);
-    void persistirLead(payload);
-
     const whatsappUrl = construirLinkWhatsApp(payload);
 
+    // Confere o destino antes de contabilizar: sem link não houve envio.
     if (!whatsappUrl) {
       setSubmitError(sectionCopy.configurationError);
-      setIsSubmitting(false);
       return;
     }
 
-    window.location.href = whatsappUrl;
+    setIsSubmitting(true);
+    void persistirLead(payload);
+
+    dispararConversao(payload, () => {
+      window.location.href = whatsappUrl;
+    });
   };
 
   return (
@@ -356,6 +419,7 @@ export function LeadFormSection() {
           className="relative overflow-hidden rounded-3xl bg-white p-6 text-neutral-950 shadow-[0_40px_120px_rgba(0,0,0,0.45)] sm:p-9 lg:p-11"
           initial={shouldReduceMotion ? false : { opacity: 0, y: 20, scale: 0.98 }}
           noValidate
+          onFocus={handleInicioFormulario}
           onSubmit={handleSubmit}
           transition={{ duration: shouldReduceMotion ? 0 : 0.45, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.2 }}
