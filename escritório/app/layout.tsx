@@ -1,10 +1,63 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import {
+  OG_IMAGE,
+  SITE_NAME,
+  SITE_URL,
+  absoluteUrl,
+  organizationJsonLd,
+} from "@/lib/seo";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Studio Office",
-  description: "Landing page da Studio Office.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Cadeiras de Escritório Cavaletti em Anápolis | Studio Office",
+    template: `%s | ${SITE_NAME}`,
+  },
+  description:
+    "Cadeiras de escritório Cavaletti para empresas em Anápolis e região, com 6 anos de garantia de fábrica. Orçamento por lote e atendimento direto com quem vende.",
+  applicationName: SITE_NAME,
+  keywords: [
+    "cadeira de escritório",
+    "cadeiras Cavaletti",
+    "cadeira ergonômica",
+    "móveis para escritório",
+    "Anápolis",
+    "Goiás",
+    "mobiliário corporativo",
+  ],
+  alternates: {
+    canonical: absoluteUrl("/"),
+  },
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    siteName: SITE_NAME,
+    url: absoluteUrl("/"),
+    title: "Cadeiras de Escritório Cavaletti em Anápolis | Studio Office",
+    description:
+      "Cadeiras Cavaletti para empresas em Anápolis e região, com 6 anos de garantia. Peça seu orçamento por lote.",
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cadeiras de Escritório Cavaletti em Anápolis | Studio Office",
+    description:
+      "Cadeiras Cavaletti para empresas em Anápolis e região, com 6 anos de garantia. Peça seu orçamento por lote.",
+    images: [OG_IMAGE.url],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
@@ -28,6 +81,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-TD7HWT3C');`}
         </Script>
         {/* End Google Tag Manager */}
+
+        {/* Dados estruturados do negócio (schema.org) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd()),
+          }}
+        />
       </head>
       <body>
         {/* Google Tag Manager (noscript) */}

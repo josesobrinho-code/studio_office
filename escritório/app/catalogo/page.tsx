@@ -8,11 +8,38 @@ import {
   catalogProducts,
   type CatalogCategory,
 } from "@/lib/catalog";
+import { OG_IMAGE, SITE_NAME, absoluteUrl, breadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Catálogo | Studio Office",
-  description: catalogCopy.subtitle,
+  title: "Catálogo de Cadeiras de Escritório Cavaletti",
+  description:
+    "Catálogo de cadeiras Cavaletti para escritório: presidente, diretor, operacional, poltronas, fixas e banquetas. Consulte preço e prazo de entrega em Anápolis-GO.",
+  alternates: {
+    canonical: absoluteUrl("/catalogo/"),
+  },
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    siteName: SITE_NAME,
+    url: absoluteUrl("/catalogo/"),
+    title: "Catálogo de Cadeiras de Escritório Cavaletti | Studio Office",
+    description:
+      "Conheça as cadeiras Cavaletti disponíveis e peça orçamento por lote para sua empresa.",
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Catálogo de Cadeiras de Escritório Cavaletti | Studio Office",
+    description:
+      "Conheça as cadeiras Cavaletti disponíveis e peça orçamento por lote para sua empresa.",
+    images: [OG_IMAGE.url],
+  },
 };
+
+const breadcrumb = breadcrumbJsonLd([
+  { name: "Início", path: "/" },
+  { name: "Catálogo", path: "/catalogo/" },
+]);
 
 const categoryOrder: CatalogCategory[] = [
   "escritorio",
@@ -24,6 +51,11 @@ const categoryOrder: CatalogCategory[] = [
 export default function CatalogoPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+      />
+
       <main className="page-shell catalog-page">
         <Header />
 
