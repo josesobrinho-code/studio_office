@@ -58,10 +58,9 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
-  },
+  // Os icones vem da convencao de arquivo do Next (app/favicon.ico, app/icon.png,
+  // app/apple-icon.png). Declarar `icons` aqui sobrescreveria essa convencao e,
+  // com caminho absoluto, o basePath do build do cPanel nao seria aplicado.
 };
 
 export default function RootLayout({
